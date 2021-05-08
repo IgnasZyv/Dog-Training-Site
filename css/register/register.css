@@ -1,0 +1,287 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+:root {
+  --primary-color: #39EECF;
+  --secondary-color:  #0f4d42;
+}
+
+body {
+  font-family: "Poppins";
+  background: #E2E2E2;
+  margin: 0;
+}
+
+.navbar {
+  background-color: white;
+  padding: 1em;
+}
+
+.navbar .logo {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-left: 1em;
+  color: black;
+  width: 120px;
+}
+
+.navbar .logo span {
+  color: var(--primary-color);
+}
+
+.navbar #menu-entry {
+  margin-right: 1.2em;
+}
+
+.navbar nav {
+  display: none;
+}
+
+.navbar .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-content: space-between;
+}
+
+.navbar .mobile-menu, .navbar .mobile-menu-exit {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  padding: 5em 2em;
+}
+
+.main-banner {
+  background: url("../../resources/assets/Services banner.svg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+}
+
+.main-banner h1 {
+  text-align: center;
+  margin: auto;
+  background: white;
+  width: 8em;
+  line-height: 2em;
+  border: solid var(--primary-color);
+  border-radius: 15px;
+  color: var(--primary-color);
+}
+
+.register-sec {
+  background: var(--secondary-color);
+  text-align: center;
+}
+
+.register-sec .place-holder p {
+  color: var(--primary-color);
+  margin: auto;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+.register-sec form {
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  margin: auto;
+}
+
+.register-sec label {
+  display: block;
+  color: white;
+  text-align: left;
+}
+
+.register-sec label .confirm-password {
+  width: 10em;
+}
+
+.register-sec input {
+  width: 20em;
+  padding: .5em;
+  border-radius: 1em;
+  border: 1px solid gray;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-bottom: 1em;
+}
+
+.register-sec .submit-cta {
+  border: 3px solid var(--primary-color);
+  background: var(white);
+  color: var(--primary-color);
+  font-weight: bold;
+  border-radius: 5em;
+  margin-top: 1em;
+  display: inline-block;
+  padding: .8em 2em;
+  width: unset;
+  cursor: pointer;
+  margin-right: 12em;
+  line-height: .8em;
+}
+
+.register-sec .login-a {
+  color: white;
+}
+
+.register-sec .login-a a {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.register-sec .form-error span {
+  height: 35px;
+  font-size: .9em;
+  color: #D83D5A;
+  text-align: left;
+}
+
+.register-sec .form-error input {
+  border: 2px solid #D83D5A;
+}
+
+#validation {
+  display: none;
+  font-size: .8em;
+  color: white;
+  text-align: left;
+}
+
+#validation .valid:before {
+  position: relative;
+  content: "✔";
+  color: var(--primary-color);
+  left: -5px;
+  right: 15px;
+}
+
+#validation .invalid:before {
+  position: relative;
+  content: "✖";
+  color: #D83D5A;
+  left: -5px;
+  right: 15px;
+}
+
+nav.menu-btn {
+  display: block;
+}
+
+nav {
+  position: fixed;
+  z-index: 500;
+  width: 60%;
+  right: 0;
+  top: 0;
+  background: var(--secondary-color);
+  display: block;
+  height: 100vh;
+  padding: 1em;
+}
+
+nav ul.primary-nav {
+  margin-top: 5em;
+}
+
+nav li a {
+  color: white;
+  display: block;
+  padding: .6em;
+  font-size: 1.2em;
+  text-align: right;
+}
+
+nav li a:hover {
+  font-weight: bold;
+}
+
+.mobile-menu-exit {
+  float: right;
+  cursor: pointer;
+  margin-top: .4em;
+}
+
+@media only screen and (min-width: 768px) {
+  .mobile-menu, .mobile-menu-exit {
+    display: none;
+  }
+  .navbar .container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 180px auto;
+        grid-template-columns: 180px auto;
+    -webkit-box-pack: unset;
+        -ms-flex-pack: unset;
+            justify-content: unset;
+  }
+  .navbar nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    position: unset;
+    height: auto;
+    background: none;
+    height: auto;
+    width: 100%;
+    padding: 0;
+  }
+  .navbar nav ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .navbar nav a {
+    color: black;
+    font-size: 1em;
+    padding: .1em 1em;
+  }
+  .navbar nav ul.primary-nav {
+    margin: 0;
+  }
+  .navbar nav li.book-cta a {
+    font-weight: bold;
+    border: solid var(--primary-color);
+    border-radius: 5em;
+    color: var(--primary-color);
+  }
+  .navbar nav li.book-cta a:hover {
+    background: var(--primary-color);
+    color: white;
+  }
+}
+
+@media only screen and (min-width: 1080px) {
+  .container {
+    width: 1080px;
+    margin: 0 auto;
+  }
+  section {
+    padding: 10em 4em;
+  }
+}
+
+@media only screen and (min-width: 1450px) {
+  .main-banner h1 {
+    width: 8em;
+    line-height: 2em;
+    border-radius: 15px;
+    font-size: 3em;
+  }
+}
+/*# sourceMappingURL=register.css.map */

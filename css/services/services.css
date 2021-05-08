@@ -1,0 +1,663 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+:root {
+  --primary-color: #39EECF;
+  --secondary-color:  #0f4d42;
+}
+
+body {
+  font-family: "Poppins";
+  background: #E2E2E2;
+  margin: 0;
+}
+
+.navbar {
+  background-color: white;
+  padding: 1em;
+}
+
+.navbar .logo {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-left: 1em;
+  color: black;
+  width: 120px;
+}
+
+.navbar .logo span {
+  color: var(--primary-color);
+}
+
+.navbar #menu-entry {
+  margin-right: 1.2em;
+}
+
+.navbar nav {
+  display: none;
+}
+
+.navbar .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-content: space-between;
+}
+
+.navbar .mobile-menu, .navbar .mobile-menu-exit {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  padding: 5em 2em;
+}
+
+.main-banner {
+  background: url("../../resources/assets/Services banner.svg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+}
+
+.main-banner h1 {
+  text-align: center;
+  margin: auto;
+  background: white;
+  width: 8em;
+  line-height: 2em;
+  border: solid var(--primary-color);
+  border-radius: 15px;
+  color: var(--primary-color);
+}
+
+.training-sec {
+  background: var(--secondary-color);
+  padding-top: 3em;
+  padding-bottom: 3em;
+  position: relative;
+}
+
+.training-sec img {
+  display: none;
+}
+
+.training-sec a {
+  display: block;
+  margin-top: 1.2em;
+  color: white;
+  font-size: 1.2em;
+  font-style: italic;
+  text-decoration: underline;
+  width: 7em;
+}
+
+.training-sec h1 {
+  text-align: center;
+  margin-bottom: 2em;
+  background: white;
+  margin: auto 0 auto 0;
+  width: 7em;
+  color: var(--primary-color);
+  border: solid var(--primary-color);
+  border-radius: 10em;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: auto;
+}
+
+.training-sec p {
+  color: white;
+  font-size: .9em;
+}
+
+.training-sec h2 {
+  font-size: 1.2em;
+  color: white;
+  width: 25em;
+}
+
+.training-sec h3 {
+  font-weight: normal;
+  color: var(--primary-color);
+}
+
+.training-sec .header {
+  font-size: 1em;
+  width: 45em;
+}
+
+.walking-sec {
+  background: var(--primary-color);
+  padding-top: 3em;
+  padding-bottom: 3em;
+  position: relative;
+}
+
+.walking-sec img {
+  display: none;
+}
+
+.walking-sec a {
+  display: block;
+  margin-top: 1.2em;
+  color: black;
+  font-size: 1.2em;
+  font-style: italic;
+  text-decoration: underline;
+  width: 7em;
+}
+
+.walking-sec h1 {
+  text-align: center;
+  margin-bottom: 2em;
+  background: white;
+  margin: auto 0 auto 0;
+  width: 7em;
+  color: var(--secondary-color);
+  border: solid var(--secondary-color);
+  border-radius: 10em;
+  font-size: 1.2em;
+  margin: auto;
+  font-weight: bold;
+}
+
+.walking-sec h2 {
+  font-size: 1.2em;
+}
+
+.walking-sec .text-left h3, .walking-sec .text-right h3 {
+  font-weight: normal;
+  margin-bottom: 0;
+  color: var(--secondary-color);
+}
+
+.walking-sec .text-left p, .walking-sec .text-right p {
+  color: black;
+  font-size: .9em;
+}
+
+.grooming-sec {
+  background: var(--secondary-color);
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+
+.grooming-sec img {
+  display: none;
+}
+
+.grooming-sec h1 {
+  text-align: center;
+  margin-bottom: 2em;
+  background: white;
+  margin: auto 0 auto 0;
+  width: 7em;
+  color: var(--primary-color);
+  border: solid var(--primary-color);
+  border-radius: 10em;
+  font-size: 1.2em;
+  margin: auto;
+  font-weight: bold;
+}
+
+.grooming-sec p {
+  margin-left: 2em;
+  color: white;
+  font-size: .9em;
+}
+
+.daycare-sec {
+  background: var(--primary-color);
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+
+.daycare-sec img {
+  display: none;
+}
+
+.daycare-sec h1 {
+  text-align: center;
+  margin-bottom: 2em;
+  background: white;
+  margin: auto 0 auto 0;
+  width: 7em;
+  color: var(--secondary-color);
+  border: solid var(--secondary-color);
+  border-radius: 10em;
+  font-size: 1.2em;
+  margin: auto;
+}
+
+.daycare-sec p {
+  margin-left: 2em;
+  color: var(--secondary-color);
+  font-size: .9em;
+}
+
+.boarding-sec {
+  background: var(--secondary-color);
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+
+.boarding-sec img {
+  display: none;
+}
+
+.boarding-sec h1 {
+  text-align: center;
+  margin-bottom: 2em;
+  background: white;
+  margin: auto 0 auto 0;
+  width: 7em;
+  color: var(--primary-color);
+  border: solid var(--primary-color);
+  border-radius: 10em;
+  font-size: 1.2em;
+  margin: auto;
+  margin-bottom: 3em;
+}
+
+.boarding-sec p {
+  margin-left: 2em;
+  color: white;
+  font-size: .9em;
+}
+
+nav.menu-btn {
+  display: block;
+}
+
+nav {
+  position: fixed;
+  z-index: 500;
+  width: 60%;
+  right: 0;
+  top: 0;
+  background: var(--secondary-color);
+  display: block;
+  height: 100vh;
+  padding: 1em;
+}
+
+nav ul.primary-nav {
+  margin-top: 5em;
+}
+
+nav li a {
+  color: white;
+  display: block;
+  padding: .6em;
+  font-size: 1.2em;
+  text-align: right;
+}
+
+nav li a:hover {
+  font-weight: bold;
+}
+
+.mobile-menu-exit {
+  float: right;
+  cursor: pointer;
+  margin-top: .4em;
+}
+
+iframe {
+  width: 100%;
+  height: 300px;
+}
+
+.contact-section {
+  padding-bottom: 1em;
+}
+
+.contact-left h2 {
+  font-size: 1.8em;
+}
+
+label {
+  display: block;
+  margin-bottom: 2px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: .5em;
+  border-radius: 1em;
+  border: 1px solid gray;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-bottom: 1em;
+}
+
+.send-cta {
+  border: 3px solid var(--primary-color);
+  background: var(white);
+  color: var(--primary-color);
+  font-weight: bold;
+  border-radius: 5em;
+  margin-bottom: 5em;
+  display: inline-block;
+  padding: .8em 2em;
+  width: unset;
+  cursor: pointer;
+}
+
+.back-top img {
+  width: 2em;
+}
+
+.back-top a, .back-top img {
+  margin-top: .5em;
+  float: left;
+  margin: 0 0 1em 1em;
+}
+
+@media only screen and (min-width: 768px) {
+  .mobile-menu, .mobile-menu-exit {
+    display: none;
+  }
+  .navbar .container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 180px auto;
+        grid-template-columns: 180px auto;
+    -webkit-box-pack: unset;
+        -ms-flex-pack: unset;
+            justify-content: unset;
+  }
+  .navbar nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    position: unset;
+    height: auto;
+    background: none;
+    height: auto;
+    width: 100%;
+    padding: 0;
+  }
+  .navbar nav ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .navbar nav a {
+    color: black;
+    font-size: 1em;
+    padding: .1em 1em;
+  }
+  .navbar nav ul.primary-nav {
+    margin: 0;
+  }
+  .navbar nav li.book-cta a {
+    font-weight: bold;
+    border: solid var(--primary-color);
+    border-radius: 5em;
+    color: var(--primary-color);
+  }
+  .navbar nav li.book-cta a:hover {
+    background: var(--primary-color);
+    color: white;
+  }
+  .main-banner {
+    background: url("../../resources/assets/Services banner.svg") no-repeat;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+  }
+  .main-banner .center {
+    text-align: center;
+    margin: 2em auto 2em auto;
+  }
+  .main-banner .center h1 {
+    text-align: center;
+    margin: auto;
+    background: white;
+    width: 8em;
+    line-height: 2em;
+    border: solid var(--primary-color);
+    border-radius: 15px;
+    color: var(--primary-color);
+    font-size: 2em;
+  }
+  .training-sec .text-container p {
+    width: 35em;
+  }
+  .walking-sec .text-container p {
+    width: 35em;
+  }
+}
+
+@media only screen and (min-width: 1080px) {
+  .container {
+    width: 1080px;
+    margin: 0 auto;
+  }
+  section {
+    padding: 10em 4em;
+  }
+  .main-banner .container {
+    display: block;
+    position: relative;
+  }
+  .main-banner {
+    background: url("../../resources/assets/Services banner.svg") no-repeat;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+  }
+  .main-banner .center {
+    text-align: center;
+    margin: 2em auto 2em auto;
+  }
+  .main-banner .center h1 {
+    text-align: center;
+    margin: auto;
+    background: white;
+    width: 8em;
+    line-height: 2em;
+    border: solid var(--primary-color);
+    border-radius: 15px;
+    color: var(--primary-color);
+    font-size: 2em;
+  }
+  .training-sec {
+    display: block;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+  }
+  .training-sec p {
+    margin: auto;
+  }
+  .training-sec h2 {
+    margin: 1em auto 1em auto;
+  }
+  .walking-sec {
+    display: block;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+  }
+  .walking-sec p {
+    margin: 0 auto;
+  }
+  .contact-section {
+    padding-top: 5em;
+    position: relative;
+    padding-bottom: 1em;
+  }
+  .contact-section .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .contact-right {
+    position: absolute;
+    right: 4em;
+    top: 10em;
+    width: 50%;
+    height: 50%;
+  }
+  .contact-right iframe {
+    height: 100%;
+  }
+  .back-top {
+    display: -ms-grid;
+    display: grid;
+  }
+  .back-top a, .back-top img {
+    float: left;
+  }
+}
+
+@media only screen and (min-width: 1450px) {
+  .main-banner {
+    background: url("../../resources/assets/Services banner.svg") no-repeat;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+  }
+  .main-banner .center {
+    text-align: center;
+    margin: 2em auto 2em auto;
+  }
+  .main-banner .center h1 {
+    text-align: center;
+    margin: auto;
+    background: white;
+    width: 8em;
+    line-height: 2em;
+    border: solid var(--primary-color);
+    border-radius: 15px;
+    color: var(--primary-color);
+    font-size: 3em;
+  }
+  .training-sec {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+  }
+  .training-sec a {
+    margin: auto;
+    width: 7em;
+  }
+  .training-sec h1 {
+    font-size: 1.8em;
+  }
+  .training-sec::before {
+    content: "";
+    position: absolute;
+    width: 10%;
+    height: 20em;
+    background: var(--primary-color);
+    left: 0;
+    top: -5em;
+    border-radius: 0 30px 30px 0;
+  }
+  .training-sec::after {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 10em;
+    background: url("../../resources/assets/Group 21.svg") no-repeat;
+    left: 4.5em;
+    top: 2em;
+  }
+  .training-sec .text-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 2em;
+  }
+  .training-sec .text-container p {
+    margin-left: 0;
+  }
+  .training-sec .text-container .text-left, .training-sec .text-container .text-center, .training-sec .text-container .text-right {
+    width: 30em;
+  }
+  .training-sec .text-container .text-left h3, .training-sec .text-container .text-center h3, .training-sec .text-container .text-right h3 {
+    font-weight: bold;
+  }
+  .training-sec .text-container .text-left p, .training-sec .text-container .text-center p, .training-sec .text-container .text-right p {
+    text-align: center;
+  }
+  .training-sec .training-pic {
+    position: relative;
+  }
+  .training-sec .training-pic img {
+    display: block;
+    position: absolute;
+    right: -5em;
+    width: 15em;
+    border-radius: 2em;
+  }
+  .walking-sec {
+    display: -ms-grid;
+    display: grid;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+  }
+  .walking-sec a {
+    margin: auto;
+    width: 7em;
+  }
+  .walking-sec h1 {
+    font-size: 1.8em;
+  }
+  .walking-sec .text-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .walking-sec .text-container p {
+    margin-left: 0;
+  }
+  .walking-sec .text-container .text-left, .walking-sec .text-container .text-right {
+    width: 30em;
+  }
+  .walking-sec .text-container .text-left h3, .walking-sec .text-container .text-right h3 {
+    font-weight: bold;
+  }
+  .walking-sec .text-container .text-left p, .walking-sec .text-container .text-right p {
+    text-align: center;
+  }
+  .walking-sec .walking-pic {
+    position: relative;
+  }
+  .walking-sec .walking-pic img {
+    display: block;
+    position: absolute;
+    right: -5em;
+    width: 15em;
+    border-radius: 2em;
+  }
+  .back-top a, .back-top img {
+    margin-left: 8em;
+  }
+}
+/*# sourceMappingURL=services.css.map */

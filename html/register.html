@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/register/register.css">
+    <title>Register</title>
+
+    <script>
+        function validateForm() {
+            var name = document.forms["login"]["fname"].value;
+            var surname = document.forms["login"]["surname"].value;
+            var email = document.forms["login"]["email"].value;
+            var password = document.forms["login"]["password"].value;
+            var cnfrmPasswod = document.forms["login"]["cnfrm-password"].value;
+
+            var lowerCaseLetters = /[a-z]/g;
+            var upperCaseLetters = /[A-Z]/g;
+            var numbers = /[0-9]/g;
+
+            if (email.includes(".") != true) {
+                document.getElementById("placeholder").innerHTML = "Email is not valid!";
+                var p = document.getElementById("placeholder");
+                return false;
+            }
+
+            if (password.length <= 6) {
+                document.getElementById("placeholder").innerHTML = "Password is too short!";
+                return false
+            }
+
+            if (upperCaseLetters.test(password) != true) {
+                document.getElementById("placeholder").innerHTML = "Password does not contain an upper case letter!";
+                return false
+            }
+
+            if (numbers.test(password) != true) {
+                document.getElementById("placeholder").innerHTML = "Password does not contain a number!";
+                return false
+            }
+
+            if (password != cnfrmPasswod) {
+                document.getElementById("placeholder").innerHTML = "Passwords don't match!";
+                return false;
+            }
+
+
+
+        }
+    
+    </script>
+
+</head>
+<body>
+    <div class="navbar" id="home">
+        <div class="container">
+            <a class="logo" href="../../html/home/home.html">A Dog's <span>Life</span></a>
+            <img id="menu-cta" class="mobile-menu" src="../../resources/assets/Icon material-menu.svg" alt="menu button">
+
+            <nav>
+                <img id="menu-exit" class="mobile-menu-exit" src="../../resources/assets/x-mark-64.svg" alt="menu exit">
+                <ul class="primary-nav">
+                    <li><a href="../../html/home/home.html">Home</a></li>
+                    <li><a href="../../html/services/services.html">Services</a></li>
+                    <li><a href="../../html/Pricing/pricing.html">Pricing</a></li>
+                </ul>
+                <ul class="secondary-nav">
+                    <li><a href="../../php/login/loginform.php">Log In</a></li>
+                    <li><a href="../../html/register/register.html">Register</a></li>
+                    <li><a href="#contact-us">Contact us</a></li>
+                    <li class="book-cta"><a href="../../html/booking/booking.html">Book now</a></li>
+                </ul>
+            </nav> 
+        </div>
+    </div>
+    <section class="main-banner">
+        <div class="container">
+            <div class="center">
+                <h1>Register</h1>
+            </div>
+        </div>
+    </section>
+    <section class="register-sec">
+        <div class="container">
+            <div>
+                <div class="place-holder">
+                    <p id="placeholder"></p>
+                </div>
+                <form name="login" action="../../php/register/proc_register.php" onsubmit="return validateForm()"  method="POST">
+                    <label for="fname">Name: <span> *</span></label>
+                    <input type="text" id="name" name="fname" required><br>
+                    <label for="surname">Surname: <span> *</span></label>
+                    <input type="text" id="surname" name="surname" required><br>
+                    <label for="email">Email: <span> *</span></label>
+                    <input type="email" id="email" name="email" required><br>
+                    <label for="password">Password: <span> *</span></label>
+                    <input type="password" id="password" name="password" required>
+                    <label class="confirm-password" for="cnfrm-password">Confirm Password: <span> *</span></label>
+                    <input type="password" id="cnfrm-password" name="cnfrm-password" required>
+                    <input class="submit-cta" type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+        <div class="login-a">
+            <p>Already have an account? <a href="../../html/login/Login.html">Log In!</a></p>
+        </div>
+    
+    </section>
+    
+</body>
+</html>

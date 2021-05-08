@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/login/login.css">
+    <title>Log in</title>
+</head>
+<body>
+    <div class="navbar" id="home">
+        <div class="container">
+            <a class="logo" href="../../html/home/home.html">A Dog's <span>Life</span></a>
+            <img id="menu-cta" class="mobile-menu" src="../../resources/assets/Icon material-menu.svg" alt="menu button">
+
+            <nav>
+                <img id="menu-exit" class="mobile-menu-exit" src="../../resources/assets/x-mark-64.svg" alt="menu exit">
+                <ul class="primary-nav">
+                    <li><a href="../../html/home/home.html">Home</a></li>
+                    <li><a href="../../html/services/services.html">Services</a></li>
+                    <li><a href="../../html/Pricing/pricing.html">Pricing</a></li>
+                </ul>
+                <ul class="secondary-nav">
+                    <li><a href="../../php/login/loginform.php">Log In</a></li>
+                    <li><a href="../../html/register/register.html">Register</a></li>
+                    <li><a href="#contact-us">Contact us</a></li>
+                    <li class="book-cta"><a href="../../html/booking/booking.html">Book now</a></li>
+                </ul>
+            </nav> 
+        </div>
+    </div>
+    <section class="main-banner">
+        <div class="container">
+            <div class="center">
+                <h1>Log in</h1>
+            </div>
+        </div>
+    </section>
+    <section class="login-sec">
+        <div class="container">
+            <div>
+
+                <form action="../../php/login/login.php" method="POST">
+                    <label for="email">email:</label> <br>
+                    <input type="text" id="email" name="email" required><br>
+                    <label for="password">Password:</label> <br>
+                    <input type="password" id="password" name="password" required><br>
+                    <input class="submit-cta" type="submit" name="login" value="Submit">
+                </form> 
+            </div>
+        </div>
+        <div class="login-img">
+            <img src="../../resources/assets/Login img.jpg" alt="Happy Corgi">
+        </div>
+    </section>
+</body>
+</html>

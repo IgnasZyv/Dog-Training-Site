@@ -1,0 +1,631 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+:root {
+    --primary-color: #39EECF;
+    --secondary-color:  #0f4d42; 
+}
+
+body {
+    font-family: "Poppins";
+    background: #E2E2E2;
+    margin: 0;
+}
+
+.navbar{
+background-color: white;
+padding: 1em;
+
+    .logo {
+        font-weight: bold;
+        font-size: 1.2em;
+        margin-left: 1em;
+        color: black;
+        width: 120px;
+        span {
+            color: var(--primary-color);
+        }
+    }
+    #menu-entry{
+        margin-right: 1.2em;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .container {
+        display: flex;
+        place-content: space-between;
+    }
+
+    .mobile-menu, .mobile-menu-exit {
+        cursor: pointer;
+    }
+
+}
+
+
+a {
+    text-decoration: none;
+}
+
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+section {
+    padding: 5em 2em;
+}
+
+#overlay {
+    position: fixed;
+    top: 4.2em;
+    width: 100%;
+    text-align:center;
+    background-color: #0f4d42;
+    z-index: 2;
+    cursor: pointer;
+    /*Flexbox*/
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+
+    h3 {
+        color: var(--primary-color);
+    }
+}
+
+
+.main-body {
+    
+    .main-img {
+        display: none;
+    }
+
+    background: url("../../resources/assets/dog-4988985_1280.svg") no-repeat;
+    background-size: cover;
+
+
+    text-align: center;
+
+    .headings {
+        background: white;
+        display: flexbox;
+        margin: auto;
+        width: 20em;
+        border-style: solid;
+        border-color: var(--primary-color);
+        border-radius: 3em;
+        box-shadow: 7px 7px 5px grey;
+        h1 {
+            font-weight: bold;
+            font-size: 33px;
+            margin-bottom: 0em;
+            span {
+                color: var(--primary-color);
+            }
+            
+        }
+
+        p {
+            font-size: 17px;
+            margin-top: 0em;
+            color: #A8A8A8;
+            text-align: right;
+            padding-right: 3em;
+            margin-bottom: 2em;
+        }
+    }
+
+    .main-cta {
+        margin: auto;
+        margin-top: 6em;
+        background: var(--primary-color);
+        width: 16em;
+        line-height: 3em;
+        border-radius: 5em;
+        box-shadow: 7px 7px 5px grey;
+        a {
+            font-weight: bold;
+            font-size: 20px;
+            color: white;
+        }
+        
+    }
+}
+
+
+.services-section {
+    background: var(--secondary-color);
+    color: white;
+
+}
+
+.services-list {
+    margin: a;
+    padding-left: 4em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+
+    li {
+        font-size: 1.5em;
+        margin-bottom: 1em;
+        margin-left: 2em;
+        position: relative;   
+    }
+
+    .training {
+        &:before {
+            content: "";
+            left: -2em;
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            margin-right: .5em;
+            background-image: url(../../resources/assets/icons/training.svg);
+            background-size: contain;
+        }
+    }
+
+    .walking {
+        &:before {
+            content: "";
+            left: -2em;
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            margin-right: .5em;
+            background-image: url(../../resources/assets/icons/walking.svg);
+            background-size: contain;
+        }
+    }
+    .grooming {
+        &:before {
+            content: "";
+            left: -2em;
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            margin-right: .5em;
+            background-image: url(../../resources/assets/icons/grooming.svg);
+            background-size: contain;
+        }
+    }
+    .daycare {
+        &:before {
+            content: "";
+            left: -2em;
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            margin-right: .5em;
+            background-image: url(../../resources/assets/icons/daycare.svg);
+            background-size: contain;
+        }
+    }
+    .vacation {
+        &:before {
+            content: "";
+            left: -2em;
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            margin-right: .5em;
+            background-image: url(../../resources/assets/icons/vacation.svg);
+            background-size: contain;
+        }
+    }
+    
+}
+
+.services-section img {
+    display: none;
+}
+
+.feedback-section {
+
+    color: white;
+    background: var(--primary-color);
+    li {
+        background: #2CAE98;
+        text-align: center;
+        padding: 2em 1em;
+        width: 80%;
+        margin: 0 auto 5em auto;
+        border-radius: 1em;
+        img {
+            width: 5em;
+            height: 5em;
+            border: 5px solid var(--primary-color);
+            border-radius: 50%;
+            margin-top: -4.5em;
+            
+        }
+    }
+
+}
+
+iframe {
+    width: 100%;
+    height: 300px;
+}
+
+.contact-section {
+    padding-bottom: 1em;
+}
+
+
+
+.contact-left {
+
+    h2 {
+        font-size: 1.8em;
+    }
+}
+
+label {
+    display: block;
+    margin-bottom: 2px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: .5em;
+    border-radius: 1em;
+    border: 1px solid gray;
+    box-sizing: border-box;
+    margin-bottom: 1em;
+}
+
+.send-cta {
+    
+    border: 3px solid var(--primary-color);
+    background: var(white);
+    color: var(--primary-color);
+    font-weight: bold;
+    border-radius: 5em;
+    margin-bottom: 5em;
+    display: inline-block;
+    padding: .8em 2em;
+    width: unset;
+    cursor: pointer;
+}
+
+nav.menu-btn {
+    display: block;
+}
+
+nav {
+    position: fixed;
+    z-index: 500;
+    width: 60%;
+    right: 0;
+    top: 0;
+    background: var(--secondary-color);
+    display: block;
+    height: 100vh;
+    padding: 1em;
+
+    ul.primary-nav {
+        margin-top: 5em;
+    }
+
+    li {
+
+        a {
+            color: white;
+            display: block;
+            padding: .6em;
+            font-size: 1.2em;
+            text-align: right;
+
+            &:hover {
+                font-weight: bold;
+            }
+        }
+    }
+
+    
+}
+
+.mobile-menu-exit {
+
+    float: right;
+    cursor: pointer;
+    margin-top: .4em;
+}
+
+
+.back-top {
+
+    img {
+        width: 2em;
+    }
+
+    a, img {
+        margin-top: .5em;
+        float: left;
+        margin: 0 0 1em 1em;
+    }
+    
+}
+
+
+@media only screen and (min-width: 768px) {
+    
+    .mobile-menu, .mobile-menu-exit {
+        display: none;
+    }
+
+    .navbar .container {
+        display: grid;
+        grid-template-columns: 180px auto;
+        justify-content: unset;
+    }
+
+    .navbar nav {
+        display: flex;
+        justify-content: space-between;
+        position: unset;
+        height: auto;
+        background: none;
+        height: auto;
+        width: 100%;
+        padding: 0;
+
+        ul {
+            display: flex;
+
+            
+        }
+
+        a {
+            color: black;
+            font-size: 1em;
+            padding: .1em 1em;
+        }
+
+        ul.primary-nav {
+            margin: 0;
+        }
+
+        li.book-cta a {
+            font-weight: bold;
+            border: solid var(--primary-color);
+            border-radius: 5em;
+            color: var(--primary-color); 
+
+            &:hover {
+                background: var(--primary-color);
+                color: white;
+            }
+        }
+
+    }
+
+
+
+}
+
+@media only screen and (min-width: 1080px) {
+
+
+    .container {
+        width: 1080px;
+        margin: 0 auto;
+    }
+
+    section {
+        padding: 10em 4em;
+    }
+
+    .main-body .container {
+        display: block;
+        position: relative;
+        
+    }
+
+    .main-body {
+        background-image: url(../../resources/assets/dog-4988985_1280.svg);
+        background-repeat: no-repeat;
+        background-position: right 20% bottom 50%;
+        background-size: 50em;
+            
+    }
+
+    .main-body .headings {
+        width: 25em;
+        margin-left: 1em;
+        h1 {
+            margin-top: 20px;
+            font-size: 50px;
+        }
+        .subhead {
+            margin-bottom: 20px;
+            font-size: 25px;
+        }
+        p {
+            padding-right: 5em;
+        }
+
+    }
+
+    .main-body .main-cta {
+        margin-top: 3em;
+        font-size: 20px;
+        margin-left: 3em;
+    }
+
+
+   
+    .services-list {
+        display: block;
+        margin-left: 4em;
+
+        li {
+            font-size: 1.8em;
+        }
+        
+    .training {
+        &:before {
+            width: 45px;
+            height: 45px;
+        }
+    }
+
+    .walking {
+        &:before {
+            width: 45px;
+            height: 45px;
+        }
+    }
+
+    .grooming {
+        &:before {
+            width: 45px;
+            height: 45px;
+        }
+    }
+
+    .daycare {
+        &:before {
+            width: 45px;
+            height: 45px;
+        }
+    }
+
+    .vacation {
+        &:before {
+            width: 45px;
+            height: 45px;
+        }
+    }
+
+    }
+
+    .services-section {
+        position: relative;
+
+        img {
+            display: block;
+            position: absolute;
+            right: 0;
+            bottom: -4em;
+            width: 20em;
+            right: 4em;
+        }
+    }
+
+    .feedback-section ul {
+        display: flex;
+
+        li {
+            margin: 0 1em;
+        }
+
+    }
+
+    .contact-section {
+        padding-top: 5em;
+        position: relative;
+        padding-bottom: 1em;
+
+        .container {
+            display: flex;
+        }
+    }
+
+    .contact-right {
+        position: absolute;
+        right: 4em;
+        top: 10em;
+        width: 50%;
+        height: 50%;
+
+        iframe {
+            height: 100%;
+        }
+
+    }
+
+    .back-top {
+        display: grid;
+
+        a, img {
+            float: left;
+        }
+        
+    }
+
+    
+
+}
+
+@media only screen and (min-width: 1450px) {
+
+
+    .main-body {
+        background-image: url(../../resources/assets/dog-4988985_1280.svg);
+        background-repeat: no-repeat;
+        background-position: right 10% bottom 50%;
+        background-size: 55em;
+            
+    }
+
+    .main-body .headings {
+        width: 30em;
+        margin-left: 10em;
+        h1 {
+            font-size: 65px;
+        }
+        .subhead {
+            font-size: 30px;
+            padding-right: 2em;
+        }
+
+
+    }
+
+    .main-body .main-cta {
+        margin-top: 3em;
+        font-size: 20px;
+        margin-left: 12em;
+    }
+
+    .services-section {
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: 10%;
+            height: 20em;
+            background: var(--primary-color);
+            left: 0;
+            top: -5em;
+            border-radius: 0 30px 30px 0;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 200px;
+            height: 10em;
+            background: url("../../resources/assets/Group\ 21.svg") no-repeat;
+            left: 4.5em;
+            top: 2em;
+        }
+    }
+
+    
+    .back-top {
+        a, img {
+            margin-left: 8em;
+        }
+    }
+
+
+}
