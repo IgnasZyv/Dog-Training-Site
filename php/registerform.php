@@ -85,6 +85,9 @@
                         <input type="email" id="email" name="email" required><br>
                     </div>
 
+                    <label for="number">Phone Number:</label>
+                    <input type="text" id="number" name="number" pattern="[0-9]+" maxlength="12" required><br>
+
                     <div id="validation">
                         <p id="letter" class="invalid">A lowercase letter</p>
                         <p id="capital" class="invalid">A capital (uppercase) letter</p>
@@ -116,7 +119,7 @@
     
     </section>
 
-    <script src="../js/register/validation.js"></script>
+    <script src="../js/validation.js"></script>
     <script src="../js/nav.js"></script>
 </body>
 </html>

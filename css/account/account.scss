@@ -82,7 +82,7 @@ section {
 .account-sec {
     background-color:var(--secondary-color);
     padding-top: 4em;
-
+    padding-bottom: 70px
     h1 {
         text-align: center;
         color: white;
@@ -102,14 +102,85 @@ section {
 
                 a {
                     color: var(--primary-color);
-                    font-size: 1.2em;
+                    font-size: 1.4em;
                 }
             }
         }
         
     }
 
+    .nav-left {
+        position: relative;
+        ul {
+            position: absolute;
+            width: fit-content;
+            top: 5em;
+            left: -2em;
+            li {
+                font-size: 1.1em;
+                margin-bottom: 3em;
+                a {
+                    color: white;
+                }
+            }
+        }
+    }
+
+    .main-box {
+        height: 250px;
+        ;
+        color: white;
+
+
+
+        ul {
+            margin-top:2em;
+            
+            a {
+                color: black;
+            }
+        }
+        
+        table {
+            text-align: center;
+            margin: 6em auto 2em auto;
+            border-collapse: separate;
+            border-spacing: 50px 0;
+
+            td {
+                padding: 10px 0;
+                color: white;
+            }
+
+            th {
+                color: var(--primary-color);
+                font-size: 1.2em;
+                height: 50px;
+                
+            }
+
+            tr {
+                margin-right: 2em;
+                // display: inline;
+            }
+        }
+
+        .change-info {
+            ul {
+                li {
+                    display: inline;
+                    margin-right: 1em;
+                    margin-top: 4em;
+                    float: right;
+                }
+            }
+        }
+    }
+
+
 }
+
+
 
 nav.menu-btn {
     display: block;

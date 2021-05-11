@@ -1,7 +1,6 @@
 <?php
 require_once("../db/db_connect.php"); 
 
-
 if (isset($_POST['date']) && isset($_POST['book']) == null) {
     $custom_date = $_POST['date'];
 

@@ -40,7 +40,7 @@ if (!isset($_SESSION['email'])) {
                 </ul>
                 <ul class="secondary-nav">
                     <?php if(isset($_SESSION['email'])) : ?>
-                        <li><a href="account-main.php"><?php echo $_SESSION['email']; ?></a></li>
+                        <li><a href="../php/account/account-main.php"><?php echo $_SESSION['email']; ?></a></li>
                         <li><a href="../php/home.php?logout='1'">logout</a></li>
                     <?php else : ?>
                         <li><a href="../php/loginform.php">Log In</a></li>
@@ -99,15 +99,11 @@ if (!isset($_SESSION['email'])) {
             <?php endif ?>
 
             <form action="booking.php" method="POST">
-                <label for="pnr">Phone Number *</label>
-                <input type="text" id="pnr" name="pnr" maxlength="13" required><br>
-
                 <label for="date">Enter the date: </label>
                 <div class="date-time">
                     <input type="text" id="date" name="date" value="<?php echo $day;?>" readonly >
                     <input type="text" id="time" name="time" placeholder="time" readonly><br>
                 </div>
-                
                 
                 <label for="message">What is the meeting for?</label>
         

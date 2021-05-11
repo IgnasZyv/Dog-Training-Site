@@ -81,14 +81,12 @@ section {
 .account-sec {
   background-color: var(--secondary-color);
   padding-top: 4em;
-}
-
-.account-sec h1 {
-  text-align: center;
-  color: white;
-  font-weight: bold;
-  font-size: 2em;
-  margin-bottom: 2em;
+  padding-bottom: 70px h1;
+  padding-bottom-text-align: center;
+  padding-bottom-color: white;
+  padding-bottom-font-weight: bold;
+  padding-bottom-font-size: 2em;
+  padding-bottom-margin-bottom: 2em;
 }
 
 .account-sec .nav ul {
@@ -103,7 +101,71 @@ section {
 
 .account-sec .nav ul li a {
   color: var(--primary-color);
+  font-size: 1.4em;
+}
+
+.account-sec .nav-left {
+  position: relative;
+}
+
+.account-sec .nav-left ul {
+  position: absolute;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  top: 5em;
+  left: -2em;
+}
+
+.account-sec .nav-left ul li {
+  font-size: 1.1em;
+  margin-bottom: 3em;
+}
+
+.account-sec .nav-left ul li a {
+  color: white;
+}
+
+.account-sec .main-box {
+  height: 250px;
+  color: white;
+}
+
+.account-sec .main-box ul {
+  margin-top: 2em;
+}
+
+.account-sec .main-box ul a {
+  color: black;
+}
+
+.account-sec .main-box table {
+  text-align: center;
+  margin: 6em auto 2em auto;
+  border-collapse: separate;
+  border-spacing: 50px 0;
+}
+
+.account-sec .main-box table td {
+  padding: 10px 0;
+  color: white;
+}
+
+.account-sec .main-box table th {
+  color: var(--primary-color);
   font-size: 1.2em;
+  height: 50px;
+}
+
+.account-sec .main-box table tr {
+  margin-right: 2em;
+}
+
+.account-sec .main-box .change-info ul li {
+  display: inline;
+  margin-right: 1em;
+  margin-top: 4em;
+  float: right;
 }
 
 nav.menu-btn {

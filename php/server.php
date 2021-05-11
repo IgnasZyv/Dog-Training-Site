@@ -11,6 +11,7 @@ if (isset($_POST['register'])) {
     $name = mysqli_real_escape_string($db, $_POST["fname"]);
     $surname = mysqli_real_escape_string($db, $_POST["surname"]);
     $email = mysqli_real_escape_string($db, $_POST["email"]);
+    $Pnumber = mysqli_real_escape_string($db, $_POST["number"]);
     $password = mysqli_real_escape_string($db, $_POST["password"]);
     $re_password = mysqli_real_escape_string($db, $_POST["cnfrm-password"]);
 
@@ -47,8 +48,8 @@ if (isset($_POST['register'])) {
     // Register the user if no errors were found.
     if (count($errors) == 0) {
         $password = md5($password);
-        $query = "INSERT INTO users (name, surname, email, password, role) 
-                VALUES('$name', '$surname','$email','$password', '1')";
+        $query = "INSERT INTO users (name, surname, email, Pnumber, password, role) 
+                VALUES('$name', '$surname','$email', '$Pnumber','$password', '1')";
 
         mysqli_query($db, $query);
 
@@ -98,7 +99,7 @@ if (isset($_POST['book'])) {
     $sess_Email = $_SESSION['email'];
     $sessCustomDate = $_SESSION['sessCustomDate'];
 
-    $query_email = "SELECT name, surname, email FROM users WHERE email='$sess_Email'";
+    $query_email = "SELECT name, surname, email, Pnumber FROM users WHERE email='$sess_Email'";
     $email_result = mysqli_query($db, $query_email);
     
     $user_result = mysqli_fetch_assoc($email_result);
@@ -106,7 +107,7 @@ if (isset($_POST['book'])) {
     $name = $user_result["name"];
     $surname = $user_result["surname"];
     $email = $user_result["email"];
-    $number = mysqli_real_escape_string($db, $_POST["pnr"]);
+    $number = $user_result["Pnumber"];
     $date = mysqli_real_escape_string($db, $_POST["date"]);
     $time = mysqli_real_escape_string($db, $_POST["time"]);
     $reason = mysqli_real_escape_string($db, $_POST["message"]);
@@ -135,7 +136,7 @@ if (isset($_POST['book'])) {
     }
 
     if (count($errors) == 0) {
-        $query = "INSERT INTO booking (name, surname, email, number, bookedDate, time, reason, dateOfBooking) 
+        $query = "INSERT INTO booking (name, surname, email, Pnumber, bookedDate, time, reason, dateOfBooking) 
                 VALUES('$name', '$surname','$email','$number', '$chosenDate', '$time', '$reason', '$currentDate')";
         mysqli_query($db, $query);
 
