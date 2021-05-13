@@ -88,7 +88,7 @@
                         <p>The goal is to teach the dog to behave when close to other people or dogs, as well as other problems such as excessive barking.</p>
                     </div>
                 </div>
-                <a href="../html/Pricing/pricing.html">Go to pricing</a>
+                <a href="pricing.php">Go to pricing</a>
                 
             </div>
         </div>

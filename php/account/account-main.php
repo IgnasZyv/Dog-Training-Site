@@ -73,6 +73,9 @@
                 <ul>
                     <li><strong><a href="#" id="first-li">Account Information</a></strong></li>
                     <li><a href="fetchbooking.php">My Bookings</a></li>
+                    <?php if(isset($_SESSION['role'])) : ?>
+                        <li><a href="admin.php">Admin Panel</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
             <div class="main-box">
@@ -102,14 +105,9 @@
                         <li>Change Phone Number</li>
                     </ul>
                 </div>
-                
-            
-            </div>
-
-
             </div>
         </div>
-  </section>
+    </section>
     
 </body>
 </html>

@@ -81,6 +81,18 @@
             </div>
         </div>
   	<?php endif ?>
+    <?php if (isset($_SESSION['NoPermission'])) : ?>
+    <div id="overlay" onclick="overlayOff()" >
+        <div class="container">
+            <h3>
+            <?php 
+                echo $_SESSION['NoPermission']; 
+                unset($_SESSION['NoPermission']);
+            ?>
+            </h3>
+        </div>
+    </div>
+  	<?php endif ?>
 
     <section class="main-body">
         <div class="container">

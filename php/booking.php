@@ -104,7 +104,6 @@ if (!isset($_SESSION['email'])) {
                     <input type="text" id="date" name="date" value="<?php echo $day;?>" readonly >
                     <input type="text" id="time" name="time" placeholder="time" readonly><br>
                 </div>
-                
                 <label for="message">What is the meeting for?</label>
         
                 <textarea name="message" id="message" cols="30" maxlength="50"></textarea><br>

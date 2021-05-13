@@ -80,9 +80,21 @@ if (isset($_POST['login'])) {
         $query = "SELECT * FROM users WHERE email = '$email' AND password = '$password' LIMIT 1";
         $results = mysqli_query($db, $query);
         $user = mysqli_fetch_assoc($results);
+        
         if (isset($user)) {
-            $_SESSION['email'] = $email;
-            $_SESSION['success'] = "You are now logged in";
+
+            $roleQuery = "SELECT role FROM users WHERE email = '$email' LIMIT 1";
+            $results = mysqli_query($db, $roleQuery);
+            $role = mysqli_fetch_assoc($results);
+
+            if ($role["role"] == 0) {
+                $_SESSION['admin'] = "admin";
+                $_SESSION['email'] = $email;
+                $_SESSION['success'] = "Admin succesfully logged in";
+            } else {
+                $_SESSION['email'] = $email;
+                $_SESSION['success'] = "You are now logged in";
+            }
 
             header('location: home.php');
         }else {
@@ -90,7 +102,6 @@ if (isset($_POST['login'])) {
             array_push($errors, $login_error);
         }
     }
-
 }
 
 
