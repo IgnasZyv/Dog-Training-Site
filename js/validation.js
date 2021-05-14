@@ -1,7 +1,7 @@
 var myInput = document.getElementById("password");
 var letter = document.getElementById("letter");
 var capital = document.getElementById("capital");
-var number = document.getElementById("number");
+var number = document.getElementById("Pnumber");
 var length = document.getElementById("length");
 
 // When the user clicks on the password field, show the message box

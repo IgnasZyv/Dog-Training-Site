@@ -73,7 +73,7 @@
                 <ul>
                     <li><strong><a href="#" id="first-li">Account Information</a></strong></li>
                     <li><a href="fetchbooking.php">My Bookings</a></li>
-                    <?php if(isset($_SESSION['role'])) : ?>
+                    <?php if(isset($_SESSION['admin'])) : ?>
                         <li><a href="admin.php">Admin Panel</a></li>
                     <?php endif; ?>
                 </ul>

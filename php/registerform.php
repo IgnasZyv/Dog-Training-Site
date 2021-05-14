@@ -91,7 +91,7 @@
                     <div id="validation">
                         <p id="letter" class="invalid">A lowercase letter</p>
                         <p id="capital" class="invalid">A capital (uppercase) letter</p>
-                        <p id="number" class="invalid">A number</p>
+                        <p id="Pnumber" class="invalid">A number</p>
                         <p id="length" class="invalid">Minimum 6 characters</p>
                     </div>
 
