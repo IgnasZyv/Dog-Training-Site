@@ -1,3 +1,4 @@
+<!-- Require the server for evaluation of the registration form -->
 <?php require('server.php'); ?>
 
 <!DOCTYPE html>
@@ -41,25 +42,21 @@
         <div class="container">
             <div>
                 <form name="login" action="../php/registerform.php"  method="POST">
-                    
-                    <div 
-                        <?php
-                            if (isset($name_error)): ?> class="form-error" 
-                        <?php endif ?> >
+                    <!-- If the error is set the form-error class will get placed on this div which will style it -->
+                    <div <?php if (isset($name_error)): ?> class="form-error" <?php endif ?> >
                         <label for="fname">Name: *</label>
-                        <?php 
+                        <!-- The error message will be displayed above the input field. -->
+                        <?php
                             if (isset($name_error)): ?>
                                 <span><?php echo $name_error; ?></span>
                         <?php endif ?>
                         <input type="text" id="name" name="fname" required><br>
                     </div>
                     
-
-                    <div 
-                        <?php 
-                            if (isset($surname_error)): ?> class="form-error" 
-                        <?php endif ?> >
+                    <!-- If the error is set the form-error class will get placed on this div which will style it -->
+                    <div <?php  if (isset($surname_error)): ?> class="form-error" <?php endif ?> >
                         <label for="surname">Surname: *</label>
+                        <!-- The error message will be displayed above the input field. -->
                         <?php 
                             if (isset($surname_error)): ?>
                                 <span><?php echo $surname_error; ?></span>
@@ -68,10 +65,7 @@
                     </div>
 
 
-                    <div 
-                        <?php 
-                            if (isset($email_taken_error) || isset($email_error)): ?> class="form-error" 
-                        <?php endif ?> >
+                    <div <?php if (isset($email_taken_error) || isset($email_error)): ?> class="form-error" <?php endif ?> >
                         <label for="email">Email: *</label>
                         <?php 
                             if (isset($email_taken_error)): ?>
@@ -85,8 +79,9 @@
                     </div>
 
                     <label for="number">Phone Number:</label>
+                    <!-- Only numbers are allowed, max length 12 -->
                     <input type="text" id="number" name="number" pattern="[0-9]+" maxlength="12" required><br>
-
+                    <!-- Validation will appear when the user clicks on the password field. -->
                     <div id="validation">
                         <p id="letter" class="invalid">A lowercase letter</p>
                         <p id="capital" class="invalid">A capital (uppercase) letter</p>
@@ -94,18 +89,17 @@
                         <p id="length" class="invalid">Minimum 6 characters</p>
                     </div>
 
-                    <div 
-                        <?php 
-                            if (isset($password_error)): ?> class="form-error" 
-                        <?php endif ?> >
+                    <div <?php if (isset($password_error)): ?> class="form-error" <?php endif ?> >
                         <label for="password">Password: *</label>
                         <?php 
                             if (isset($password_error)): ?>
                                 <span><?php echo $password_error; ?></span>
                         <?php endif ?>
+                        <!-- The patterns requires for atleast 1 number letter and upper case letter and min length of 6 -->
                         <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required> <br>
+
                         <label class="confirm-password" for="cnfrm-password">Confirm Password: *</label>
-                        <input type="password" id="cnfrm-password" name="cnfrm-password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required>
+                        <input type="password" id="cnfrm-password" name="cnfrm-password" required>
                     </div>
 
                     <input class="submit-cta" type="submit" name="register" value="Submit">

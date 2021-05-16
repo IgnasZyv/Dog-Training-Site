@@ -75,7 +75,7 @@ if ($result->num_rows > 0) {
                     <li><a href="account-main.php" id="first-li">Account Information</a></li>
                     <li><strong><a href="fetchbooking.php">My Bookings</a></strong></li>
                     <?php if(isset($_SESSION['admin'])) : ?>
-                        <li><a href="adminMain.php">Admin Panel</a></li>
+                        <li><a href="admin/adminMain.php">Admin Panel</a></li>
                     <?php endif; ?>
                 </ul>
             </div>

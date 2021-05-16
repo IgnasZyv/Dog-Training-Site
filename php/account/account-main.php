@@ -97,7 +97,7 @@
                     <li><strong><a href="#" id="first-li">Account Information</a></strong></li>
                     <li><a href="comBookings.php">My Bookings</a></li>
                     <?php if(isset($_SESSION['admin'])) : ?>
-                        <li><a href="adminMain.php">Admin Panel</a></li>
+                        <li><a href="admin/adminMain.php">Admin Panel</a></li>
                     <?php endif; ?>
                 </ul>
             </div>

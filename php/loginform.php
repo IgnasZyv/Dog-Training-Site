@@ -1,4 +1,8 @@
-<?php require('server.php'); ?>
+<?php 
+// Require server.php where the login form will be evaluated.
+require('server.php'); 
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +14,7 @@
     <title>Log in</title>
 </head>
 <body>
+    <!-- Main navigation -->
     <div class="navbar" id="home">
         <div class="container">
             <a class="logo" href="../php/home.php">A Dog's <span>Life</span></a>
@@ -38,6 +43,7 @@
             </div>
         </div>
     </section>
+    <!-- if the user tried to access a page and was redirected here the following message will say why -->
     <?php if (isset($_SESSION['loginFirst'])) : ?>
         <div id="overlay" onclick="overlayOff()" >
             <div class="container">
@@ -56,6 +62,7 @@
 
                 <form action="../php/loginform.php" method="POST">
                     <div class="form-error">
+                        <!-- If the user didn't fill in the form correctly they will be shown an error whu -->
                     <?php if (isset($login_error)) : ?>
                         <span>
                         <?php 

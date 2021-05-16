@@ -1,17 +1,6 @@
 <?php
     session_start();
 
-    // if (!isset($_SESSION['email'])) {
-    //     $_SESSION['msg'] = "You must log in first";
-    //     header('location: ../../php/login/loginform.php');
-    // }
-    
-    if (isset($_GET['logout'])) {
-        session_destroy();
-        unset($_SESSION['email']);
-        header("location: ../php/home.php");
-    }
-
 ?>
 
 
@@ -26,6 +15,7 @@
     <title>Pricing</title>
 </head>
 <body>
+    <!-- Main navigation -->
     <div class="navbar" id="home">
         <div class="container">
             <a class="logo" href="../php/home.php">A Dog's <span>Life</span></a>
@@ -39,6 +29,7 @@
                     <li><strong><a href="../php/pricing.php">Pricing</a></strong></li>
                 </ul>
                 <ul class="secondary-nav">
+                    <!-- If the user is logged in instead of Log in and Register they will be displayed their email -->
                     <?php if(isset($_SESSION['email'])) : ?>
                         <li><a href="account/account-main.php"><?php echo $_SESSION['email']; ?></a></li>
                         <li><a href="../php/home.php?logout='1'">logout</a></li>

@@ -1,11 +1,7 @@
 <?php
+    // Start the session or continue the current one. This is so the user doesn't get logged out.
     session_start();
-
-    // if (!isset($_SESSION['email'])) {
-    //     $_SESSION['msg'] = "You must log in first";
-    //     header('location: ../../php/login/loginform.php');
-    // }
-    
+    // If the logout button is pressed the session is destroyed therefore the user gets logged out.
     if (isset($_GET['logout'])) {
         session_destroy();
         unset($_SESSION['email']);
@@ -26,11 +22,11 @@
     <title>Home</title>
 </head>
 <body>
+        <!-- Main navigation -->
       <div class="navbar" id="home">
           <div class="container">
               <a class="logo" href="../php/home.php">A Dog's <span>Life</span></a>
               <img id="menu-cta" class="mobile-menu" src="../resources/assets/Icon material-menu.svg" alt="menu button">
-
               <nav>
                   <img id="menu-exit" class="mobile-menu-exit" src="../resources/assets/x-mark-64.svg" alt="menu exit">
                   <ul class="primary-nav">
@@ -39,7 +35,7 @@
                       <li><a href="../php/pricing.php">Pricing</a></li>
                   </ul>
                   <ul class="secondary-nav">
-
+                     <!-- If the user is logged in instead of Log in and Register they will be displayed their email -->
                     <?php if(isset($_SESSION['email'])) : ?>
                         <li><a href="account/account-main.php"><?php echo $_SESSION['email']; ?></a></li>
                         <li><a href="../php/home.php?logout='1'">logout</a></li>
@@ -56,7 +52,7 @@
           </div>
       </div>
     </div>
-
+    <!-- Display various messages for the user as to why they ended up here. -->
     <?php if (isset($_SESSION['success'])) : ?>
         <div id="overlay" onclick="overlayOff()" >
             <div class="container">
@@ -93,7 +89,7 @@
         </div>
     </div>
   	<?php endif ?>
-
+        <!-- Main heading -->
     <section class="main-body">
         <div class="container">
             <div class="main-container">
@@ -128,6 +124,7 @@
     </section>
     <section class="feedback-section">
         <div class="container">
+            <!-- Feedback section with Lorem Ipsum -->
             <ul>
                 <li>
                     <img src="../resources/assets/max-ilienerwise-YvWJOXHNJ94-unsplash Cropped.svg" alt="Person">
