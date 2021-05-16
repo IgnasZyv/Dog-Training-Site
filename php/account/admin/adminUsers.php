@@ -1,14 +1,14 @@
 <?php
 require_once("../../../db/db_connect.php");
-
+// If the user is not an admin redirects the user home and displays a message
 if (!isset($_SESSION['admin'])) {
-    $_SESSION['NoPermission'] = "You are not allowed to see this page!";
+    $_SESSION['msg'] = "You are not allowed to see this page!";
     header('location: ../home.php');
 }
-
+// Take current users email
 $email = $_SESSION['email'];
 
-
+// Sorts all of the user entries by role so the admins will be displayed first
 $userQuery = "SELECT * FROM users ORDER BY role ASC";
 
 $result = mysqli_query($db, $userQuery);
@@ -35,6 +35,7 @@ if ($result->num_rows > 0) {
     <title>Admin Panel</title>
 </head>
 <body>
+<!-- Main navigation -->
     <div class="navbar" id="home">
         <div class="container">
             <a class="logo" href="../home.php">A Dog's <span>Life</span></a>
@@ -48,7 +49,7 @@ if ($result->num_rows > 0) {
                     <li><a href="../../pricing.php">Pricing</a></li>
                 </ul>
                 <ul class="secondary-nav">
-
+                    <!-- If the user is logged in instead of Log in and Register they will be displayed their email -->
                   <?php if(isset($_SESSION['email'])) : ?>
                       <li><strong><a href="account/account-main.php"><?php echo $_SESSION['email']; ?></a></strong></li>
                       <li><a href="../../home.php?logout='1'">logout</a></li>
@@ -75,14 +76,17 @@ if ($result->num_rows > 0) {
   <section class="account-sec">
         <div class="container">
             <div class="nav">
+                <!-- Secondary navigation for the account -->
                 <ul>
                     <li><a href="../account-main.php" id="first-li">Account Information</a></li>
                     <li><a href="../comBookings.php">My Bookings</a></li>
+                    <!-- If the user logged in is admin display this list item -->
                     <?php if(isset($_SESSION['admin'])) : ?>
                         <li><strong><a href="adminMain.php">Admin Panel</a></strong></li>
                     <?php endif; ?>
                 </ul>
             </div>
+            <!-- Supportive navigation for the admin page -->
             <div class="nav-right">
                 <ul>
                     <li><a href="adminMain.php">View Bookings</a></li>
@@ -95,7 +99,7 @@ if ($result->num_rows > 0) {
 
                     <div class="users">
                         <h2>Users</h2>
-
+                        <!-- Table for displaying users from the database -->
                         <table id="users-info">
                             <tr>
                                 <th scope="col">Name</th>
@@ -104,7 +108,9 @@ if ($result->num_rows > 0) {
                                 <th scope="col">Phone Number</th>
                             </tr>
                             <tr>
-                            <?php foreach($userRows as $key=>$val){ ?>          
+                            <!-- For every entry user in the database -->
+                            <?php foreach($userRows as $key=>$val){ ?>       
+                                <!-- if the user from the database is an admin add the class to that row for styling -->
                                 <?php if ($val['role'] == '0') : ?>
                                     <tr class="rowAdmin">
                                         <td><?php echo $val['name']; ?></td>
@@ -112,6 +118,7 @@ if ($result->num_rows > 0) {
                                         <td><?php echo $val['email']; ?></td>
                                         <td><?php echo $val['Pnumber']; ?></td>
                                     </tr>
+                                <!-- Otherwise don't add the class with no special styling -->
                                 <?php else : ?>
                                     <tr class="row">
                                         <td><?php echo $val['name']; ?></td>
@@ -124,15 +131,9 @@ if ($result->num_rows > 0) {
                             </tr>
                         </table>
                     </div>
-
-                    
-
-                </div>
-
-                                    
+                </div>                   
             </div>
         </div>
     </section>
-    
 </body>
 </html>

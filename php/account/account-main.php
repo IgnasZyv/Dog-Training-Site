@@ -1,19 +1,17 @@
 <?php
     require_once("../../db/db_connect.php");
+    // If the user is not logged in they will be redirected to the login page and displayed the message
     if (!isset($_SESSION['email'])) {
-        $_SESSION['loginFirst'] = "You must log in first!";
+        $_SESSION['msg'] = "You must log in first!";
         header('location: ../loginform.php');
     }
-
-    
-
-
+    // Take the user's email
     $email = $_SESSION['email'];
-
+    // Take information about the user from the database
     $userQuery = "SELECT name, surname, Pnumber FROM users WHERE email = '$email' LIMIT 1";
     $result = mysqli_query($db, $userQuery);
     $user = mysqli_fetch_assoc($result);
-
+    // Store that information
     $name = $user['name'];
     $surname = $user['surname'];
     $pNumber = $user['Pnumber'];
@@ -30,6 +28,7 @@
     <title>Account</title>
 </head>
 <body>
+    <!-- Main navigation -->
     <div class="navbar" id="home">
         <div class="container">
             <a class="logo" href="../home.php">A Dog's <span>Life</span></a>
@@ -43,7 +42,7 @@
                     <li><a href="../pricing.php">Pricing</a></li>
                 </ul>
                 <ul class="secondary-nav">
-
+                    <!-- If the user is logged in instead of Log in and Register they will be displayed their email -->
                   <?php if(isset($_SESSION['email'])) : ?>
                       <li><strong><a href="account/account-main.php"><?php echo $_SESSION['email']; ?></a></strong></li>
                       <li><a href="../home.php?logout='1'">logout</a></li>
@@ -66,36 +65,26 @@
             </div>
         </div>
     </section>
-    <?php if (isset($_SESSION['updSuccess'])) : ?>
+    <!-- Different messages to display to let the user know why they ended up here -->
+    <?php if (isset($_SESSION['msg'])) : ?>
         <div id="overlay" onclick="overlayOff()" >
             <div class="container">
                 <h3>
                 <?php 
-                    echo $_SESSION['updSuccess']; 
-                    unset($_SESSION['updSuccess']);
+                    echo $_SESSION['msg']; 
+                    unset($_SESSION['msg']);
                 ?>
                 </h3>
             </div>
         </div>
   	<?php endif ?>
-    <?php if (isset($_SESSION['updFail'])) : ?>
-        <div id="overlay" onclick="overlayOff()" >
-            <div class="container">
-                <h3>
-                <?php 
-                    echo $_SESSION['updFail']; 
-                    unset($_SESSION['updFail']);
-                ?>
-                </h3>
-            </div>
-        </div>
-    <?php endif ?>
   <section class="account-sec">
         <div class="container">
             <div class="nav">
                 <ul>
                     <li><strong><a href="#" id="first-li">Account Information</a></strong></li>
                     <li><a href="comBookings.php">My Bookings</a></li>
+                    <!-- if the user is an admin they will be displayed this list item -->
                     <?php if(isset($_SESSION['admin'])) : ?>
                         <li><a href="admin/adminMain.php">Admin Panel</a></li>
                     <?php endif; ?>
@@ -112,6 +101,7 @@
                             <th scope="col">Phone Number</th>
                         </tr>
                         <tr>
+                            <!-- Display the values from the database about the logged in user -->
                             <td><?php echo $name; ?></td>
                             <td><?php echo $surname; ?></td>
                             <td><?php echo $email; ?></td>
@@ -123,6 +113,7 @@
 
                 <div class="change-info">
                     <ul>
+                        <!-- Buttons for changing information -->
                         <li><a href="changePass.php">Change Password</a></li>
                         <li>Change Email</li>
                         <li>Change Phone Number</li>

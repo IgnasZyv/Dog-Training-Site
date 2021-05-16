@@ -11,8 +11,6 @@ if (isset($_SESSION['fromAdmin'])) {
 }
 
 
-
-
 // Array for erros
 $errors = array();
 
@@ -84,7 +82,7 @@ if (isset($_POST['register'])) {
             // Sets a session veriable with the email which allows for user to be remembered while they are browsing pages.
             $_SESSION['email'] = $email;
             // A message to display when the user is created.
-  	        $_SESSION['success'] = "You are now logged in";
+  	        $_SESSION['msg'] = "You are now logged in";
             // Redirect the user to the home page when done  
             header("location: home.php");
         }
@@ -125,13 +123,13 @@ if (isset($_POST['login'])) {
                 $_SESSION['admin'] = "admin";
                 $_SESSION['email'] = $email;
                 // Message to display after log in
-                $_SESSION['success'] = "Admin succesfully logged in";
+                $_SESSION['msg'] = "Admin succesfully logged in";
+                
             } else {
                 $_SESSION['email'] = $email;
                 // Message to display after log in
-                $_SESSION['success'] = "You are now logged in";
+                $_SESSION['msg'] = "You are now logged in";
             }
-
             header('location: home.php');
         }else {
             // Iff errors were found display the following error in the form
@@ -196,7 +194,7 @@ if (isset($_POST['book'])) {
                 VALUES('$name', '$surname','$email','$number', '$chosenDate', '$time', '$reason', '$currentDate')";
         mysqli_query($db, $query);
         // Message to display if the booking was successfull
-        $_SESSION['booking_msg'] = "Succesfully booked a meeting!";
+        $_SESSION['msg'] = "Succesfully booked a meeting!";
         header("Location: home.php");
     }
 }
@@ -232,9 +230,9 @@ if (isset($_POST['changePass'])) {
         // Update the users table with the new password for the users account
         $updPass = "UPDATE users SET password = '$newPass' WHERE email = '$email'";
         if (mysqli_query($db, $updPass)) {
-            $_SESSION['updSuccess'] = "Passwords updated successfully.";
+            $_SESSION['msg'] = "Passwords updated successfully.";
         } else {
-            $_SESSION['updFail'] = "Password was not updated.";
+            $_SESSION['msg'] = "Password was not updated.";
             echo $db->error;
         }
 

@@ -203,6 +203,10 @@ section {
   margin-right: 2em;
 }
 
+.account-sec .main-box table caption {
+  caption-side: bottom;
+}
+
 .account-sec .main-box .change-info ul li {
   display: inline;
   margin-right: 1em;

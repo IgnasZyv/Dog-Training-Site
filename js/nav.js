@@ -1,3 +1,4 @@
+// Navigation controls for the mobile view (Not all pages are styled to support mobile view.)
 const mobileBtn = document.getElementById("menu-cta");
 const nav = document.querySelector("nav");
 const mobileBtnExit = document.getElementById("menu-exit");

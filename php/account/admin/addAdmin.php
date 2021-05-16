@@ -1,10 +1,9 @@
 <?php
-// require_once("../../db/db_connect.php");
 $_SESSION['fromAdmin'] = true;
 require('../../server.php');
 
 if (!isset($_SESSION['admin'])) {
-    $_SESSION['NoPermission'] = "You are not allowed to see this page!";
+    $_SESSION['msg'] = "You are not allowed to see this page!";
     header('location: ../../home.php');
 }
 
@@ -51,13 +50,13 @@ if (!isset($_SESSION['admin'])) {
         </div>
     </div>
   </div>
-  <?php if (isset($_SESSION['success'])) : ?>
+  <?php if (isset($_SESSION['msg'])) : ?>
         <div id="overlay" onclick="overlayOff()" >
             <div class="container">
                 <h3>
                 <?php 
-                    echo $_SESSION['success']; 
-                    unset($_SESSION['success']);
+                    echo $_SESSION['msg']; 
+                    unset($_SESSION['msg']);
                 ?>
                 </h3>
             </div>

@@ -2,8 +2,13 @@
 require('adminBooking.php');
 
 
+// if (!isset($_SESSION['admin'])) {
+//     $_SESSION['NoPermission'] = "You are not allowed to see this page!";
+//     header('location: ../../home.php');
+// }
+
 if (!isset($_SESSION['admin'])) {
-    $_SESSION['NoPermission'] = "You are not allowed to see this page!";
+    $_SESSION['msg'] = "You are not allowed to see this page!";
     header('location: ../../home.php');
 }
 

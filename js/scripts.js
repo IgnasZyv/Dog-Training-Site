@@ -1,9 +1,9 @@
-// Overelay Message stuff
+// Notification message turn off function
 function overlayOff() {
     var overlay = document.getElementById("overlay");
     overlay.style.display = "none";
 } 
-// after a set time turn off the overlay.
+// after a set time turn off call the overlayOff function which turns it off.
 setTimeout(() => {
     overlayOff()
 }, 3000);
@@ -17,11 +17,9 @@ function noWeekends(e){
     // 6 is saturday 0 is sunday.
     if(day == 0 || day == 6 ){
         e.target.setCustomValidity('Please enter a valid day');
-
     } else {
         e.target.setCustomValidity('');
     }
-
 }
 
 date.addEventListener('input',noWeekends);

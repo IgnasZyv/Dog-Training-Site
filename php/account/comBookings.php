@@ -1,9 +1,9 @@
 <?php
 
 require_once("../../db/db_connect.php");
-
+// Take the logged in users email
 $email = $_SESSION['email'];
-
+// Pull information regarding the bookings from that specific user
 $bookingQuery = "SELECT bookedDate, time, reason, dateOfBooking FROM booking WHERE email = '$email' 
 ORDER BY `booking`.`bookedDate`, `booking`.`time`  ASC";
 $result = mysqli_query($db, $bookingQuery);
@@ -12,14 +12,17 @@ $comingBookings = array();
 
 if ($result->num_rows > 0) {
     // output data of each row
-        while($row = $result->fetch_assoc()) {
+    while($row = $result->fetch_assoc()) {
+        // Check if the booking is upcoming and not passed
+        if (new dateTime($row['bookedDate']) >= new dateTime()) {
+            // Push that booking into the coming bookings array
+            array_push($comingBookings, $row);
 
-            if (new dateTime($row['bookedDate']) >= new dateTime()) {
-                array_push($comingBookings, $row);
-
-            }
         }
     }
+} else {
+    $emptyArray = "No bookings were found.";
+}
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +35,8 @@ if ($result->num_rows > 0) {
     <title>Booking information</title>
 </head>
 <body>
-<div class="navbar" id="home">
+    <!-- Main Navigation -->
+    <div class="navbar" id="home">
         <div class="container">
             <a class="logo" href="../home.php">A Dog's <span>Life</span></a>
             <img id="menu-cta" class="mobile-menu" src="../../resources/assets/Icon material-menu.svg" alt="menu button">
@@ -45,7 +49,7 @@ if ($result->num_rows > 0) {
                     <li><a href="../pricing.php">Pricing</a></li>
                 </ul>
                 <ul class="secondary-nav">
-
+                    <!-- If the user is logged in instead of Log in and Register they will be displayed their email -->
                   <?php if(isset($_SESSION['email'])) : ?>
                       <li><strong><a href="account/account-main.php"><?php echo $_SESSION['email']; ?></a></strong></li>
                       <li><a href="../home.php?logout='1'">logout</a></li>
@@ -70,10 +74,12 @@ if ($result->num_rows > 0) {
     </section>
     <section class="account-sec">
         <div class="container">
+            <!-- Secondary navigation for the account -->
             <div class="nav">
                 <ul>
                     <li><a href="account-main.php" id="first-li">Account Information</a></li>
                     <li><strong><a href="fetchbooking.php">My Bookings</a></strong></li>
+                    <!-- If the user logged in is admin display this list item -->
                     <?php if(isset($_SESSION['admin'])) : ?>
                         <li><a href="admin/adminMain.php">Admin Panel</a></li>
                     <?php endif; ?>
@@ -88,21 +94,29 @@ if ($result->num_rows > 0) {
             <div class="main-box">
                 <h2>Upcoming Boookings</h2>
                 <div style="overflow-x:auto;">
-                    <table id="user-information">
+                        <!-- Table for displaying upcoming bookings -->
+                    <table id="booking-information">
                         <tr>
                             <th scope="col">Booking Date</th>
                             <th scope="col">Time</th>
                             <th scope="col">Reason</th>
                             <th scope="col">Date Of Booking</th>
                         </tr>
-                        <?php foreach($comingBookings as $key=>$val){ ?>
+
+                        <?php if(!isset($emptyArray)) : ?>
+                            <!-- For every entery in the comingBookings table creates a table row -->
+                            <?php foreach($comingBookings as $key=>$val){ ?>
                             <tr>
                                 <td><?php echo $val['bookedDate']; ?></td>
+                                <!-- Convert the time recieved from database so I can format it to display the AM and PM -->
                                 <td><?php echo date('H:i A', strtotime($val['time']));?></td>
                                 <td><?php echo $val['reason']; ?></td>
                                 <td><?php echo $val['dateOfBooking']; ?></td>
                             </tr>
-                        <?php } ?>
+                            <?php } ?>
+                        <?php else : ?>
+                            <caption><?php echo $emptyArray; ?></caption>
+                        <?php endif ;?>
                     </table>
                 </div>
             </div>

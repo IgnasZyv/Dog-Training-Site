@@ -1,9 +1,9 @@
 <?php
 require('adminBookingScript.php');
 
-
+// If the user is not an admin they will be redirected to the home page
 if (!isset($_SESSION['admin'])) {
-    $_SESSION['NoPermission'] = "You are not allowed to see this page!";
+    $_SESSION['msg'] = "You are not allowed to see this page!";
     header('location: ../../home.php');
 }
 
@@ -36,7 +36,7 @@ if (!isset($_SESSION['admin'])) {
                     <li><a href="../../pricing.php">Pricing</a></li>
                 </ul>
                 <ul class="secondary-nav">
-
+                    <!-- If the user is logged in instead of Log in and Register they will be displayed their email -->
                   <?php if(isset($_SESSION['email'])) : ?>
                       <li><strong><a href="account-main.php"><?php echo $_SESSION['email']; ?></a></strong></li>
                       <li><a href="../../home.php?logout='1'">logout</a></li>
@@ -62,15 +62,18 @@ if (!isset($_SESSION['admin'])) {
 
   <section class="account-sec">
         <div class="container">
+            <!-- Secondary navigation for the account -->
             <div class="nav">
                 <ul>
                     <li><a href="../account-main.php" id="first-li">Account Information</a></li>
                     <li><a href="../comBookings.php">My Bookings</a></li>
+                    <!-- If the user logged in is admin display this list item -->
                     <?php if(isset($_SESSION['admin'])) : ?>
                         <li><strong><a href="adminMain.php">Admin Panel</a></strong></li>
                     <?php endif; ?>
                 </ul>
             </div>
+            <!-- Supportive navigation for the admin page -->
             <div class="nav-right">
                 <ul>
                     <li><strong><a href="adminMain.php">View Bookings</a></strong></li>
@@ -82,6 +85,7 @@ if (!isset($_SESSION['admin'])) {
                 <div class="flex-container">
                     <div class="bookings">
                         <h2>Upcoming Boookings</h2>
+                        <!-- Table for displaying all of the upcoming bookings from the database -->
                         <table id="booking-info">
                             <tr>
                                 <th scope="col"></th>
@@ -91,14 +95,17 @@ if (!isset($_SESSION['admin'])) {
                                 <th scope="col">Reason</th>
                                 <th scope="col">email</th>
                                 <th scope="col">Date Of Booking</th>
-                
                             </tr>
                             <div class="bookingRows">
+                                <!-- For every upcoming booking creates a table row -->
                                 <?php foreach($comingBookings as $key=>$val){ ?>
                                     <tr class="row">
-                                        <td><input type="button" class="delete" value="Delete"></td>                                        
+                                        <!-- A button for delete the row which is used by js -->
+                                        <td><input type="button" class="delete" value="Delete"></td>     
+                                        <!-- Takes the id of the booking which is used to delete the table row incase the delete button is clicked -->
                                         <td class="bookingId"><?php echo $val['id']; ?></td>
                                         <td><?php echo $val['bookedDate']; ?></td>
+                                        <!-- Convert the time recieved from database so I can format it to display the AM and PM -->
                                         <td><?php echo date('H:i A', strtotime($val['time']));?></td>
                                         <td><?php echo $val['reason']; ?></td>
                                         <td><?php echo $val['email']; ?></td>
@@ -134,7 +141,7 @@ if (!isset($_SESSION['admin'])) {
                 $.post('adminBookingScript.php', data, function (res) {
                     console.log('received response', res);
                     // we want to delete the table row only if we received a response back saying that it worked
-                    if (res == "status") {
+                    if (res == "success") {
                         console.log('deleting row');
                         tr.remove();
                     } else {

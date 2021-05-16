@@ -146,6 +146,9 @@ if (isset($_POST['date']) && isset($_POST['book']) == null) {
     // To show the current week day
     $_SESSION['showing_day'] = date("l", strtotime($day));
 
+    // Create session variable with the date used
+    $_SESSION['sessCustomDate'] = $day;
+
     // Check if any times are taken with the used date
     $dateTime_query = "SELECT time FROM booking WHERE bookedDate = '$day'";
 

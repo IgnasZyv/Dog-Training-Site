@@ -5,6 +5,7 @@
     if (isset($_GET['logout'])) {
         session_destroy();
         unset($_SESSION['email']);
+        $_SESSION['msg'] = "Logged out successfully";
         header("location: ../php/home.php");
     }
 
@@ -53,41 +54,17 @@
       </div>
     </div>
     <!-- Display various messages for the user as to why they ended up here. -->
-    <?php if (isset($_SESSION['success'])) : ?>
+    <?php if (isset($_SESSION['msg'])) : ?>
         <div id="overlay" onclick="overlayOff()" >
             <div class="container">
                 <h3>
                 <?php 
-                    echo $_SESSION['success']; 
-                    unset($_SESSION['success']);
+                    echo $_SESSION['msg']; 
+                    unset($_SESSION['msg']);
                 ?>
                 </h3>
             </div>
         </div>
-  	<?php endif ?>
-    <?php if (isset($_SESSION['booking_msg'])) : ?>
-        <div id="overlay" onclick="overlayOff()" >
-            <div class="container">
-                <h3>
-                <?php 
-                    echo $_SESSION['booking_msg']; 
-                    unset($_SESSION['booking_msg']);
-                ?>
-                </h3>
-            </div>
-        </div>
-  	<?php endif ?>
-    <?php if (isset($_SESSION['NoPermission'])) : ?>
-    <div id="overlay" onclick="overlayOff()" >
-        <div class="container">
-            <h3>
-            <?php 
-                echo $_SESSION['NoPermission']; 
-                unset($_SESSION['NoPermission']);
-            ?>
-            </h3>
-        </div>
-    </div>
   	<?php endif ?>
         <!-- Main heading -->
     <section class="main-body">

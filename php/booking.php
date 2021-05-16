@@ -7,13 +7,11 @@ if (isset($_POST['book'])) {
 }
 // If the user is not logged in redirect them to login form and display the error message
 if (!isset($_SESSION['email'])) {
-    $_SESSION['loginFirst'] = "You must log in first";
+    $_SESSION['msg'] = "You must log in first";
     header('location: ../php/loginform.php');
 }
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

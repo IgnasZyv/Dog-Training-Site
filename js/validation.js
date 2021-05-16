@@ -18,11 +18,13 @@ myInput.onkeyup = function() {
     // Validate lower case letters
     var lowerCaseLetters = /[a-z]/g;
     if(myInput.value.match(lowerCaseLetters)) {  
-      letter.classList.remove("invalid");
-      letter.classList.add("valid");
+        // remove the class from an element with letter id (This is for css styling)
+        letter.classList.remove("invalid");
+        // Add the class valid onto the element with letter id (This is for css styling)
+        letter.classList.add("valid");
     } else {
-      letter.classList.remove("valid");
-      letter.classList.add("invalid");
+        letter.classList.remove("valid");
+        letter.classList.add("invalid");
     }
 
     // Validate Capital case letters

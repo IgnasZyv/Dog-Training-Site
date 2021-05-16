@@ -6,7 +6,7 @@ require('../server.php');
 
 // if the user is not logged in they will be redirected to the main page and displayed the message.
 if (!isset($_SESSION['email'])) {
-    $_SESSION['NoPermission'] = "You are not allowed to see this page!";
+    $_SESSION['msg'] = "You are not allowed to see this page!";
     header('location: ../home.php');
 }
 
@@ -53,13 +53,13 @@ if (!isset($_SESSION['email'])) {
     </div>
   </div>
   <!-- If this session variable is set it will be displayed as a notification pop up -->
-  <?php if (isset($_SESSION['success'])) : ?>
+  <?php if (isset($_SESSION['msg'])) : ?>
         <div id="overlay" onclick="overlayOff()" >
             <div class="container">
                 <h3>
                 <?php 
-                    echo $_SESSION['success']; 
-                    unset($_SESSION['success']);
+                    echo $_SESSION['msg']; 
+                    unset($_SESSION['msg']);
                 ?>
                 </h3>
             </div>
@@ -100,7 +100,7 @@ if (!isset($_SESSION['email'])) {
                                 <input type="password" id="oldPass" name="oldPass" required> <br>
                             </div>
                             
-                            <!-- When user clicks on the password field thid div will appear. -->
+                            <!-- When user clicks on the password field this div will appear. -->
                             <div id="validation">
                                 <p id="letter" class="invalid">A lowercase letter</p>
                                 <p id="capital" class="invalid">A capital (uppercase) letter</p>

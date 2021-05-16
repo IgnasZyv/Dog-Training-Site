@@ -198,6 +198,10 @@ section {
                 margin-right: 2em;
                 // display: inline;
             }
+
+            caption {
+                caption-side: bottom;
+            }
         }
 
         .change-info {

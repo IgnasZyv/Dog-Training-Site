@@ -1,5 +1,5 @@
 <!-- Require the server for evaluation of the registration form -->
-<?php require('server.php'); ?>
+<?php require('server.php');?>
 
 <!DOCTYPE html>
 <html lang="en">
