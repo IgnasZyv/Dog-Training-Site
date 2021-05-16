@@ -33,10 +33,10 @@
     <div class="navbar" id="home">
         <div class="container">
             <a class="logo" href="../home.php">A Dog's <span>Life</span></a>
-            <img id="menu-cta" class="mobile-menu" src="../resources/assets/Icon material-menu.svg" alt="menu button">
+            <img id="menu-cta" class="mobile-menu" src="../../resources/assets/Icon material-menu.svg" alt="menu button">
 
             <nav>
-                <img id="menu-exit" class="mobile-menu-exit" src="../resources/assets/x-mark-64.svg" alt="menu exit">
+                <img id="menu-exit" class="mobile-menu-exit" src="../../resources/assets/x-mark-64.svg" alt="menu exit">
                 <ul class="primary-nav">
                     <li><a href="../home.php">Home</a></li>
                     <li><a href="../services.php">Services</a></li>
@@ -66,20 +66,43 @@
             </div>
         </div>
     </section>
-
+    <?php if (isset($_SESSION['updSuccess'])) : ?>
+        <div id="overlay" onclick="overlayOff()" >
+            <div class="container">
+                <h3>
+                <?php 
+                    echo $_SESSION['updSuccess']; 
+                    unset($_SESSION['updSuccess']);
+                ?>
+                </h3>
+            </div>
+        </div>
+  	<?php endif ?>
+    <?php if (isset($_SESSION['updFail'])) : ?>
+        <div id="overlay" onclick="overlayOff()" >
+            <div class="container">
+                <h3>
+                <?php 
+                    echo $_SESSION['updFail']; 
+                    unset($_SESSION['updFail']);
+                ?>
+                </h3>
+            </div>
+        </div>
+    <?php endif ?>
   <section class="account-sec">
         <div class="container">
             <div class="nav">
                 <ul>
                     <li><strong><a href="#" id="first-li">Account Information</a></strong></li>
-                    <li><a href="fetchbooking.php">My Bookings</a></li>
+                    <li><a href="comBookings.php">My Bookings</a></li>
                     <?php if(isset($_SESSION['admin'])) : ?>
-                        <li><a href="admin.php">Admin Panel</a></li>
+                        <li><a href="adminMain.php">Admin Panel</a></li>
                     <?php endif; ?>
                 </ul>
             </div>
             <div class="main-box">
-
+                <h2>My Information</h2>
                 <div style="overflow-x:auto;">
                     <table id="user-information">
                         <tr>
@@ -100,7 +123,7 @@
 
                 <div class="change-info">
                     <ul>
-                        <li>Change Password</li>
+                        <li><a href="changePass.php">Change Password</a></li>
                         <li>Change Email</li>
                         <li>Change Phone Number</li>
                     </ul>

@@ -14,7 +14,6 @@
         <div class="container">
             <a class="logo" href="../php/home.php">A Dog's <span>Life</span></a>
             <img id="menu-cta" class="mobile-menu" src="../resources/assets/Icon material-menu.svg" alt="menu button">
-
             <nav>
                 <img id="menu-exit" class="mobile-menu-exit" src="../resources/assets/x-mark-64.svg" alt="menu exit">
                 <ul class="primary-nav">

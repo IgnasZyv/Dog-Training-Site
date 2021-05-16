@@ -1,5 +1,12 @@
 <?php
-require_once("../db/db_connect.php");
+
+if (isset($_SESSION['fromAccount'])) {
+    require_once("../../db/db_connect.php");
+} else {
+    require_once("../db/db_connect.php");
+}
+unset($_SESSION['fromAccount']);
+
 
 $errors = array();
 
@@ -48,19 +55,29 @@ if (isset($_POST['register'])) {
     // Register the user if no errors were found.
     if (count($errors) == 0) {
         $password = md5($password);
-        $query = "INSERT INTO users (name, surname, email, Pnumber, password, role) 
+
+        if (isset($_SESSION['admin'])) {
+            $query = "INSERT INTO users (name, surname, email, Pnumber, password, role) 
+                VALUES('$name', '$surname','$email', '$Pnumber','$password', '0')";
+
+            mysqli_query($db, $query);
+
+  	        $_SESSION['success'] = "Admin succesfully created";
+            header("location: addAdmin.php");
+
+        } else {
+            $query = "INSERT INTO users (name, surname, email, Pnumber, password, role) 
                 VALUES('$name', '$surname','$email', '$Pnumber','$password', '1')";
 
-        mysqli_query($db, $query);
+            mysqli_query($db, $query);
+            $_SESSION['email'] = $email;
+  	        $_SESSION['success'] = "You are now logged in";
 
-        $_SESSION['email'] = $email;
-  	    $_SESSION['success'] = "You are now logged in";
+            header("location: home.php");
+        }
 
-        header("location: home.php");
     }
-    
-    
-    
+
 }
 
 if (isset($_POST['login'])) {
@@ -154,4 +171,48 @@ if (isset($_POST['book'])) {
         $_SESSION['booking_msg'] = "Succesfully booked a meeting!";
         header("Location: home.php");
     }
+}
+
+
+if (isset($_POST['changePass'])) {
+    $email = $_SESSION['email'];
+
+    $oldPass = mysqli_real_escape_string($db, $_POST["oldPass"]);
+    $newPass = mysqli_real_escape_string($db, $_POST["newPass"]);
+    $cnfrmPass = mysqli_real_escape_string($db, $_POST["cnfrmPass"]);
+
+    $passQuery = "SELECT password FROM users WHERE email = '$email' LIMIT 1";
+    $result = mysqli_query($db, $passQuery);
+    $userPass = mysqli_fetch_assoc($result);
+
+    $mdPass = md5($oldPass);
+
+    if ($userPass['password'] != $mdPass) {
+        $oldPassWrongError = "Sorry, old password is not correct.";
+        array_push($errors, $oldPassWrongError);
+    }
+
+    if ($newPass != $cnfrmPass) {
+        $passDontMatchError = "Sorry, Passwords don't match.";
+        array_push($errors, $passDontMatchError);
+    }
+
+    if (count($errors) == 0) {
+        $newPass = md5($newPass);
+
+        $updPass = "UPDATE users SET password = '$newPass' WHERE email = '$email'";
+        if (mysqli_query($db, $updPass)) {
+            $_SESSION['updSuccess'] = "Passwords updated successfully.";
+        } else {
+            $_SESSION['updFail'] = "Password was not updated.";
+            echo $db->error;
+        }
+
+        header("location: account-main.php");
+
+    }
+
+    
+
+    
 }

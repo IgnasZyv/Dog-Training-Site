@@ -26,7 +26,7 @@ function noWeekends(e){
 
 date.addEventListener('input',noWeekends);
 
-// Counting characters in the booking form.
+// Counting characters in the booking form reason field.
 var msgEl;
 
 function countCharacters(e) {
@@ -40,12 +40,10 @@ function countCharacters(e) {
 msgEl = document.getElementById('message');                   
 msgEl.addEventListener('keyup', countCharacters, false);
 
-// Check which List item was clicked.
+// Check which List item was clicked in the booking form.
 var ul = document.getElementById('time-list');  // Parent ul
 var text =  document.querySelector("input[name='time']") // text field
-
-
-    
+// when ul item is clicked
 $(document).on("click",ul, function(e){
     var target = e.target; // Clicked element
     console.log(target.value);
@@ -56,21 +54,29 @@ $(document).on("click",ul, function(e){
     }
   });
 
+
+// Date picker in the registration form.
 var dateToday = new Date(); 
 $(function() {
     $("#date").datepicker({
+        // format and settings on the datepicker
         beforeShowDay: $.datepicker.noWeekends,
         minDate: dateToday,
         dateFormat: "yy-mm-dd"
     });
+    // when date is changed
     $("#date").on("change",function(){
         var selected = $(this).val();
         document.getElementById('time').value = '';
-
-        $.post('bookingscript.php', {'date':selected}, function(data){
-            console.log(data);
-            $("#time-right").html(data);
+        // send ajax request into booking script with the date selected
+        $.post('bookingscript.php', {'date':selected}, function(res){
+            // logs the vaue sent
+            console.log(res);
+            // deletes the contents of the time-right div and places "data" recieved inside it.
+            $("#time-right").html(res);
+        });
     });
+
 });
 
-})
+

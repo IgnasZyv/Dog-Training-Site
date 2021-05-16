@@ -8,15 +8,18 @@ $bookingQuery = "SELECT bookedDate, time, reason, dateOfBooking FROM booking WHE
 ORDER BY `booking`.`bookedDate`, `booking`.`time`  ASC";
 $result = mysqli_query($db, $bookingQuery);
 
-$bookingRows = array();
+$comingBookings = array();
+
 if ($result->num_rows > 0) {
     // output data of each row
-    while($row = $result->fetch_assoc()) {
-    array_push($bookingRows, $row);
+        while($row = $result->fetch_assoc()) {
+
+            if (new dateTime($row['bookedDate']) >= new dateTime()) {
+                array_push($comingBookings, $row);
+
+            }
+        }
     }
-}
-
-
 ?>
 
 <!DOCTYPE html>
@@ -32,10 +35,10 @@ if ($result->num_rows > 0) {
 <div class="navbar" id="home">
         <div class="container">
             <a class="logo" href="../home.php">A Dog's <span>Life</span></a>
-            <img id="menu-cta" class="mobile-menu" src="../resources/assets/Icon material-menu.svg" alt="menu button">
+            <img id="menu-cta" class="mobile-menu" src="../../resources/assets/Icon material-menu.svg" alt="menu button">
 
             <nav>
-                <img id="menu-exit" class="mobile-menu-exit" src="../resources/assets/x-mark-64.svg" alt="menu exit">
+                <img id="menu-exit" class="mobile-menu-exit" src="../../resources/assets/x-mark-64.svg" alt="menu exit">
                 <ul class="primary-nav">
                     <li><a href="../home.php">Home</a></li>
                     <li><a href="../services.php">Services</a></li>
@@ -72,11 +75,18 @@ if ($result->num_rows > 0) {
                     <li><a href="account-main.php" id="first-li">Account Information</a></li>
                     <li><strong><a href="fetchbooking.php">My Bookings</a></strong></li>
                     <?php if(isset($_SESSION['admin'])) : ?>
-                        <li><a href="admin.php">Admin Panel</a></li>
+                        <li><a href="adminMain.php">Admin Panel</a></li>
                     <?php endif; ?>
                 </ul>
             </div>
+            <div class="nav-right">
+                <ul>
+                    <li><strong><a href="comBookings.php">Upcoming Bookings</a></strong></li>
+                    <li><a href="prevBookings.php">Previous Bookings</a></li>
+                </ul>
+            </div>
             <div class="main-box">
+                <h2>Upcoming Boookings</h2>
                 <div style="overflow-x:auto;">
                     <table id="user-information">
                         <tr>
@@ -85,7 +95,7 @@ if ($result->num_rows > 0) {
                             <th scope="col">Reason</th>
                             <th scope="col">Date Of Booking</th>
                         </tr>
-                        <?php foreach($bookingRows as $key=>$val){ ?>
+                        <?php foreach($comingBookings as $key=>$val){ ?>
                             <tr>
                                 <td><?php echo $val['bookedDate']; ?></td>
                                 <td><?php echo date('H:i A', strtotime($val['time']));?></td>

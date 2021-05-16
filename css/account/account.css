@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 :root {
   --primary-color: #39EECF;
@@ -60,6 +61,32 @@ section {
   padding: 5em 2em;
 }
 
+#overlay {
+  position: fixed;
+  top: 4.2em;
+  width: 100%;
+  text-align: center;
+  background-color: #0f4d42;
+  z-index: 2;
+  cursor: pointer;
+  /*Flexbox*/
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#overlay h3 {
+  color: var(--primary-color);
+}
+
 .main-banner {
   background: url("../../resources/assets/Services banner.svg") no-repeat;
   background-size: cover;
@@ -104,31 +131,38 @@ section {
   font-size: 1.4em;
 }
 
-.account-sec .nav-left {
+.account-sec .nav-right {
   position: relative;
+  float: right;
 }
 
-.account-sec .nav-left ul {
+.account-sec .nav-right ul {
   position: absolute;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  top: 5em;
-  left: -2em;
+  display: block;
+  right: -4em;
+  top: 1em;
 }
 
-.account-sec .nav-left ul li {
-  font-size: 1.1em;
-  margin-bottom: 3em;
+.account-sec .nav-right ul li {
+  margin-bottom: 2em;
+  text-align: center;
+  width: 14em;
 }
 
-.account-sec .nav-left ul li a {
+.account-sec .nav-right ul a {
   color: white;
+  font-size: 1.2em;
 }
 
 .account-sec .main-box {
-  height: 250px;
   color: white;
+}
+
+.account-sec .main-box h2 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 1em auto;
 }
 
 .account-sec .main-box ul {
@@ -141,9 +175,17 @@ section {
 
 .account-sec .main-box table {
   text-align: center;
-  margin: 6em auto 2em auto;
-  border-collapse: separate;
-  border-spacing: 50px 0;
+  margin: auto;
+  border-collapse: collapse;
+}
+
+.account-sec .main-box table .row:hover {
+  background-color: #39eed071;
+}
+
+.account-sec .main-box table th, .account-sec .main-box table td {
+  padding: 8px;
+  border-bottom: 1px solid var(--primary-color);
 }
 
 .account-sec .main-box table td {
@@ -166,6 +208,103 @@ section {
   margin-right: 1em;
   margin-top: 4em;
   float: right;
+}
+
+.account-sec .main-box .change-info a {
+  color: white;
+}
+
+.account-sec .main-box .change-info a:hover {
+  font-weight: bold;
+}
+
+.changePass {
+  background-color: var(--secondary-color);
+}
+
+.changePass form {
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  margin: auto;
+}
+
+.changePass label {
+  display: block;
+  color: white;
+  text-align: left;
+}
+
+.changePass label .confirm-password {
+  width: 10em;
+}
+
+.changePass input {
+  width: 20em;
+  padding: .5em;
+  border-radius: 1em;
+  border: 1px solid gray;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-bottom: 1em;
+}
+
+.changePass .submit-cta {
+  border: 3px solid var(--primary-color);
+  background: var(white);
+  color: var(--primary-color);
+  font-weight: bold;
+  border-radius: 5em;
+  margin-top: 1em;
+  display: inline-block;
+  padding: .8em 2em;
+  width: unset;
+  cursor: pointer;
+  margin-right: 12em;
+  line-height: .8em;
+}
+
+.changePass .login-a {
+  color: white;
+}
+
+.changePass .login-a a {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.changePass .form-error span {
+  height: 35px;
+  font-size: .9em;
+  color: #D83D5A;
+  text-align: left;
+}
+
+.changePass .form-error input {
+  border: 2px solid #D83D5A;
+}
+
+#validation {
+  display: none;
+  font-size: .8em;
+  color: white;
+  text-align: left;
+}
+
+#validation .valid:before {
+  position: relative;
+  content: "✔";
+  color: var(--primary-color);
+  left: -5px;
+  right: 15px;
+}
+
+#validation .invalid:before {
+  position: relative;
+  content: "✖";
+  color: #D83D5A;
+  left: -5px;
+  right: 15px;
 }
 
 nav.menu-btn {
