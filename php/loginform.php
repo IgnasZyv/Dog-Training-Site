@@ -44,18 +44,20 @@ require('server.php');
         </div>
     </section>
     <!-- if the user tried to access a page and was redirected here the following message will say why -->
-    <?php if (isset($_SESSION['loginFirst'])) : ?>
-        <div id="overlay" onclick="overlayOff()" >
-            <div class="container">
-                <h3>
-                <?php 
-                    echo $_SESSION['loginFirst']; 
-                    unset($_SESSION['loginFirst']);
-                ?>
-                </h3>
+    <?php if (isset($_SESSION['msg'])) : ?>
+            <div id="overlay" onclick="overlayOff()">
+                <div class="container">
+                    <h3>
+                    <?php 
+                        echo $_SESSION['msg'];
+                         
+                        unset($_SESSION['msg']);
+                    ?>
+                    </h3>
+                </div>
             </div>
-        </div>
-  	<?php endif ?>
+    <?php endif ?>
+
     <section class="login-sec">
         <div class="container">
             <div>
