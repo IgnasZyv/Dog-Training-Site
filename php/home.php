@@ -66,6 +66,30 @@
             </div>
         </div>
   	<?php endif ?>
+    <?php if (isset($_SESSION['LoggedIn'])) : ?>
+        <div id="overlay" onclick="overlayOff()" >
+            <div class="container">
+                <h3>
+                <?php 
+                    echo $_SESSION['LoggedIn']; 
+                    unset($_SESSION['LoggedIn']);
+                ?>
+                </h3>
+            </div>
+        </div>
+  	<?php endif ?>
+    <?php if (isset($_SESSION['AdmLoggedIn'])) : ?>
+        <div id="overlay" onclick="overlayOff()" >
+            <div class="container">
+                <h3>
+                <?php 
+                    echo $_SESSION['AdmLoggedIn']; 
+                    unset($_SESSION['AdmLoggedIn']);
+                ?>
+                </h3>
+            </div>
+        </div>
+  	<?php endif ?>
         <!-- Main heading -->
     <section class="main-body">
         <div class="container">

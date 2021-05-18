@@ -7,7 +7,6 @@ if (!isset($_SESSION['admin'])) {
     header('location: ../../home.php');
 }
 
-
 ?>
 
 
@@ -18,14 +17,13 @@ if (!isset($_SESSION['admin'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="../../../css/account/admin/admin.css">
     <title>Admin Panel</title>
 </head>
 <body>
     <div class="navbar" id="home">
         <div class="container">
-            <a class="logo" href="../home.php">A Dog's <span>Life</span></a>
+            <a class="logo" href="../../home.php">A Dog's <span>Life</span></a>
             <img id="menu-cta" class="mobile-menu" src="../../resources/assets/Icon material-menu.svg" alt="menu button">
 
             <nav>
@@ -59,8 +57,32 @@ if (!isset($_SESSION['admin'])) {
             </div>
         </div>
     </section>
+    <?php if (isset($_SESSION['msg'])) : ?>
+        <div id="overlay" onclick="overlayOff()" >
+            <div class="container">
+                <h3>
+                <?php 
+                    echo $_SESSION['msg']; 
+                    unset($_SESSION['msg']);
+                ?>
+                </h3>
+            </div>
+        </div>
+  	<?php endif ?>
+    <?php if (isset($_SESSION['admCreated'])) : ?>
+        <div id="overlay" onclick="overlayOff()" >
+            <div class="container">
+                <h3>
+                <?php 
+                    echo $_SESSION['admCreated']; 
+                    unset($_SESSION['admCreated']);
+                ?>
+                </h3>
+            </div>
+        </div>
+  	<?php endif ?>
 
-  <section class="account-sec">
+    <section class="account-sec">
         <div class="container">
             <!-- Secondary navigation for the account -->
             <div class="nav">
@@ -85,9 +107,14 @@ if (!isset($_SESSION['admin'])) {
                 <div class="flex-container">
                     <div class="bookings">
                         <h2>Upcoming Boookings</h2>
+                        <!-- Search box -->
+                        <div class="inputContainer">
+                            <input type="text" id="searchInput" placeholder="Search.." style="margin-right: 43em;">
+                        </div>
                         <!-- Table for displaying all of the upcoming bookings from the database -->
-                        <table id="booking-info">
-                            <tr>
+                        <table>
+                            <thead>
+                                <tr>
                                 <th scope="col"></th>
                                 <th scope="col">ID</th>
                                 <th scope="col">Booking Date</th>
@@ -96,23 +123,27 @@ if (!isset($_SESSION['admin'])) {
                                 <th scope="col">email</th>
                                 <th scope="col">Date Of Booking</th>
                             </tr>
-                            <div class="bookingRows">
-                                <!-- For every upcoming booking creates a table row -->
-                                <?php foreach($comingBookings as $key=>$val){ ?>
-                                    <tr class="row">
-                                        <!-- A button for delete the row which is used by js -->
-                                        <td><input type="button" class="delete" value="Delete"></td>     
-                                        <!-- Takes the id of the booking which is used to delete the table row incase the delete button is clicked -->
-                                        <td class="bookingId"><?php echo $val['id']; ?></td>
-                                        <td><?php echo $val['bookedDate']; ?></td>
-                                        <!-- Convert the time recieved from database so I can format it to display the AM and PM -->
-                                        <td><?php echo date('H:i A', strtotime($val['time']));?></td>
-                                        <td><?php echo $val['reason']; ?></td>
-                                        <td><?php echo $val['email']; ?></td>
-                                        <td><?php echo $val['dateOfBooking']; ?></td>
-                                    </tr>
-                                <?php } ?>
-                            </div>
+                            </thead>
+                            <tbody id="fromDatabase">
+                                <div class="bookingRows">
+                                    <!-- For every upcoming booking creates a table row -->
+                                    <?php foreach($comingBookings as $key=>$val){ ?>
+                                        <tr class="row">
+                                            <!-- A button for delete the row which is used by js -->
+                                            <td><input type="button" class="delete" value="Delete"></td>     
+                                            <!-- Takes the id of the booking which is used to delete the table row incase the delete button is clicked -->
+                                            <td class="bookingId"><?php echo $val['id']; ?></td>
+                                            <td><?php echo $val['bookedDate']; ?></td>
+                                            <!-- Convert the time recieved from database so I can format it to display the AM and PM -->
+                                            <td><?php echo date('H:i A', strtotime($val['time']));?></td>
+                                            <td><?php echo $val['reason']; ?></td>
+                                            <td><?php echo $val['email']; ?></td>
+                                            <td><?php echo $val['dateOfBooking']; ?></td>
+                                        </tr>
+                                    <?php } ?>
+                                </div>
+                            </tbody>
+                            
                             
                         </table>
                     </div>
@@ -151,6 +182,20 @@ if (!isset($_SESSION['admin'])) {
             }
         });
 
+
+        $(document).ready(function(){
+            // When something is typed in the search box
+            $("#searchInput").on("keyup", function() {
+                // Store the input and change into into lowercase
+                var input = $(this).val().toLowerCase();
+                $("#fromDatabase tr").filter(function() {
+                    // Loops throught the table rows changes everything to lowercase and checks if the input is in that row
+                    $(this).toggle($(this).text().toLowerCase().indexOf(input) > -1)
+                });
+            });
+        });
+
     </script>
+
 </body>
 </html>

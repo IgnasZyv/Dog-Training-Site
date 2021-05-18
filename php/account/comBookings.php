@@ -31,6 +31,7 @@ if ($result->num_rows > 0) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="../../css/account/account.css">
     <title>Booking information</title>
 </head>
@@ -78,7 +79,7 @@ if ($result->num_rows > 0) {
             <div class="nav">
                 <ul>
                     <li><a href="account-main.php" id="first-li">Account Information</a></li>
-                    <li><strong><a href="fetchbooking.php">My Bookings</a></strong></li>
+                    <li><strong><a href="comBookings.php">My Bookings</a></strong></li>
                     <!-- If the user logged in is admin display this list item -->
                     <?php if(isset($_SESSION['admin'])) : ?>
                         <li><a href="admin/adminMain.php">Admin Panel</a></li>
@@ -93,17 +94,23 @@ if ($result->num_rows > 0) {
             </div>
             <div class="main-box">
                 <h2>Upcoming Boookings</h2>
+                <!-- Search box -->
+                <div class="inputContainer">
+                    <input type="text" id="searchInput" placeholder="Search..">
+                </div>
                 <div style="overflow-x:auto;">
                         <!-- Table for displaying upcoming bookings -->
-                    <table id="booking-information">
-                        <tr>
-                            <th scope="col">Booking Date</th>
-                            <th scope="col">Time</th>
-                            <th scope="col">Reason</th>
-                            <th scope="col">Date Of Booking</th>
-                        </tr>
-
-                        <?php if(!isset($emptyArray)) : ?>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Booking Date</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Reason</th>
+                                <th scope="col">Date Of Booking</th>
+                            </tr>
+                        </thead>
+                        <tbody id="fromDatabase">
+                            <?php if(!isset($emptyArray)) : ?>
                             <!-- For every entery in the comingBookings table creates a table row -->
                             <?php foreach($comingBookings as $key=>$val){ ?>
                             <tr>
@@ -114,13 +121,29 @@ if ($result->num_rows > 0) {
                                 <td><?php echo $val['dateOfBooking']; ?></td>
                             </tr>
                             <?php } ?>
-                        <?php else : ?>
-                            <caption><?php echo $emptyArray; ?></caption>
-                        <?php endif ;?>
+                            <?php else : ?>
+                                <caption><?php echo $emptyArray; ?></caption>
+                            <?php endif ;?>
+                        </tbody>
+                        
                     </table>
                 </div>
             </div>
         </div>
     </section>
+    <script src="../js/nav.js"></script>
+    <script>
+        $(document).ready(function(){
+            // When something is typed in the search box
+            $("#searchInput").on("keyup", function() {
+                // Store the input and change into into lowercase
+                var input = $(this).val().toLowerCase();
+                $("#fromDatabase tr").filter(function() {
+                    // Loops throught the table rows changes everything to lowercase and checks if the input is in that row
+                    $(this).toggle($(this).text().toLowerCase().indexOf(input) > -1)
+                });
+            });
+        });
+    </script>
 </body>
 </html>

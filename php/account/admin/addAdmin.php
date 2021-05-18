@@ -23,7 +23,7 @@ if (!isset($_SESSION['admin'])) {
 <body>
     <div class="navbar" id="home">
         <div class="container">
-            <a class="logo" href="../home.php">A Dog's <span>Life</span></a>
+            <a class="logo" href="../../home.php">A Dog's <span>Life</span></a>
             <img id="menu-cta" class="mobile-menu" src="../../resources/assets/Icon material-menu.svg" alt="menu button">
 
             <nav>
@@ -50,18 +50,6 @@ if (!isset($_SESSION['admin'])) {
         </div>
     </div>
   </div>
-  <?php if (isset($_SESSION['msg'])) : ?>
-        <div id="overlay" onclick="overlayOff()" >
-            <div class="container">
-                <h3>
-                <?php 
-                    echo $_SESSION['msg']; 
-                    unset($_SESSION['msg']);
-                ?>
-                </h3>
-            </div>
-        </div>
-  	<?php endif ?>
   <section class="main-banner">
         <div class="container">
             <div class="center">
@@ -85,7 +73,7 @@ if (!isset($_SESSION['admin'])) {
                 <ul>
                     <li><a href="admin.php">View Bookings</a></li>
                     <li><a href="adminUsers.php">View Users</a></li>
-                    <li><strong><a href="adminUsers.php">Add Users</a></strong></li>
+                    <li><strong><a href="addAdmin.php">Add Users</a></strong></li>
                 </ul>
             </div>
             <div class="main-box">

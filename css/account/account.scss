@@ -169,6 +169,23 @@ section {
                 color: black;
             }
         }
+
+        .inputContainer {
+            text-align: center;
+            margin: 0 auto;
+
+            input {
+                width: 10em;
+                padding: .5em;
+                border-radius: 1em;
+                border: 1px solid gray;
+                box-sizing: border-box;
+                margin-bottom: 1em;
+                margin-right: 25em;
+            
+            }
+        }
+        
         
         table {
             text-align: center;
@@ -227,7 +244,7 @@ section {
 
 }
 
-.changePass {
+.changeAcc {
 
     background-color:var(--secondary-color);
 

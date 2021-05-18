@@ -66,18 +66,43 @@
         </div>
     </section>
     <!-- Different messages to display to let the user know why they ended up here -->
-    <?php if (isset($_SESSION['msg'])) : ?>
+    <?php if (isset($_SESSION['emailUpdSucc'])) : ?>
         <div id="overlay" onclick="overlayOff()" >
             <div class="container">
                 <h3>
                 <?php 
-                    echo $_SESSION['msg']; 
-                    unset($_SESSION['msg']);
+                    echo $_SESSION['emailUpdSucc']; 
+                    unset($_SESSION['emailUpdSucc']);
                 ?>
                 </h3>
             </div>
         </div>
   	<?php endif ?>
+    <?php if (isset($_SESSION['passUpd'])) : ?>
+        <div id="overlay" onclick="overlayOff()" >
+            <div class="container">
+                <h3>
+                <?php 
+                    echo $_SESSION['passUpd']; 
+                    unset($_SESSION['passUpd']);
+                ?>
+                </h3>
+            </div>
+        </div>
+  	<?php endif ?>
+    <?php if (isset($_SESSION['passUpd'])) : ?>
+        <div id="overlay" onclick="overlayOff()" >
+            <div class="container">
+                <h3>
+                <?php 
+                    echo $_SESSION['passUpd']; 
+                    unset($_SESSION['passUpd']);
+                ?>
+                </h3>
+            </div>
+        </div>
+  	<?php endif ?>
+
   <section class="account-sec">
         <div class="container">
             <div class="nav">
@@ -115,13 +140,14 @@
                     <ul>
                         <!-- Buttons for changing information -->
                         <li><a href="changePass.php">Change Password</a></li>
-                        <li>Change Email</li>
+                        <li><a href="changeEmail.php">Change Email</a></li>
                         <li>Change Phone Number</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
-    
+    <script src="../js/nav.js"></script>
+    <script src="../js/scripts.js"></script>
 </body>
 </html>

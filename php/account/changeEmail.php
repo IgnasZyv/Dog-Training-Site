@@ -52,6 +52,19 @@ if (!isset($_SESSION['email'])) {
         </div>
     </div>
   </div>
+  <!-- If this session variable is set it will be displayed as a notification pop up -->
+  <?php if (isset($_SESSION['msg'])) : ?>
+        <div id="overlay" onclick="overlayOff()" >
+            <div class="container">
+                <h3>
+                <?php 
+                    echo $_SESSION['msg']; 
+                    unset($_SESSION['msg']);
+                ?>
+                </h3>
+            </div>
+        </div>
+  	<?php endif ?>
   <section class="main-banner">
         <div class="container">
             <div class="center">
@@ -73,42 +86,39 @@ if (!isset($_SESSION['email'])) {
                 </ul>
             </div>
             <div class="main-box">
-                <h2>Change Password</h2>
+                <h2>Change Email</h2>
                 <div class="changeAcc">
-                    <form action="changePass.php" method="POST">
-                        <div>
-                            <!-- if a specific error variable is set the div with get a class of form error wich will add css to make it red and display the error -->
-                            <div <?php if (isset($oldPassWrongError)): ?> class="form-error" <?php endif ?> >
-                                <label for="oldPass">Old Password: *</label>
-                                    <?php 
-                                        if (isset($oldPassWrongError)): ?>
-                                            <span><?php echo $oldPassWrongError; ?></span>
-                                    <?php endif ?>
-                                <input type="password" id="oldPass" name="oldPass" required> <br>
-                            </div>
-                            
-                            <!-- When user clicks on the password field this div will appear. -->
-                            <div id="validation">
-                                <p id="letter" class="invalid">A lowercase letter</p>
-                                <p id="capital" class="invalid">A capital (uppercase) letter</p>
-                                <p id="Pnumber" class="invalid">A number</p>
-                                <p id="length" class="invalid">Minimum 6 characters</p>
-                            </div>
-
-                            <div <?php if (isset($passDontMatchError)): ?> class="form-error" <?php endif ?> >
-                                <label for="password">New Password: *</label>
-                                    <?php 
-                                        if (isset($passDontMatchError)): ?>
-                                            <span><?php echo $passDontMatchError; ?></span>
-                                    <?php endif ?>
-                                <input type="password" id="password" name="newPass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required>
-                            </div>
-
-                            <label for="cnfrmPass">Confirm Password: *</label>
-                            <input type="password" id="cnfrmPass" name="cnfrmPass" required>
-
-                            <input class="submit-cta" type="submit" name="changePass" value="Submit">
+                    <form action="changeEmail.php" method="POST">
+ 
+                         <!-- If the error is set the form-error class will get placed on this div which will style it -->
+                        <div <?php if (isset($passwordsDifferent)): ?> class="form-error" <?php endif ?> >
+                            <label for="password">Password: *</label>
+                            <!-- The error message will be displayed above the input field. -->
+                            <?php
+                                if (isset($passwordsDifferent)): ?>
+                                    <span><?php echo $passwordsDifferent; ?></span>
+                            <?php endif ?>
+                            <input type="password" name="password" id="password" required>
                         </div>
+                         
+                        <div <?php if (isset($email_taken_error) || isset($email_error)): ?> class="form-error" <?php endif ?> >
+                            <label for="newEmail">New Email: *</label>
+
+                            <?php if (isset($email_taken_error)): ?>
+                                <span><?php echo $email_taken_error; ?></span>
+                            <?php endif ?>
+
+                            <?php if (isset($email_error)): ?>
+                                <span><?php echo $email_error; ?></span>
+                            <?php endif ?>
+
+                            <input type="email" name="newEmail" id="newEmail" required>
+                        </div>
+                        
+                        <label for="cnfrmEmail">Confirm Email: *</label>
+                        <input type="email" name="cnfrmEmail" id="cnfrmEmail" required>
+
+                        <input class="submit-cta" type="submit" name="changeEmail">
                     </form>
                 </div>
                 

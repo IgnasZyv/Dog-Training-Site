@@ -41,7 +41,7 @@ if (isset($_POST['register'])) {
         $email_error = "Email is not valid.";
         array_push($errors, $email_error);
     }
-    // If both passwords are the same.
+    // If both passwords are not the same.
     if ($password != $re_password) {
         $password_error = "Passwords are not the same.";
         array_push($errors, $password_error);
@@ -69,9 +69,9 @@ if (isset($_POST['register'])) {
 
             mysqli_query($db, $query);
             // A message to display when the user is created.
-  	        $_SESSION['success'] = "Admin succesfully created";
+  	        $_SESSION['admCreated'] = "Admin successfully created";
               // Redirect the admin to the page when done
-            header("location: addAdmin.php");
+            header("location: adminMain.php");
 
         } else {
             // When user is created through registration form the role is 1 which is default.
@@ -82,7 +82,7 @@ if (isset($_POST['register'])) {
             // Sets a session veriable with the email which allows for user to be remembered while they are browsing pages.
             $_SESSION['email'] = $email;
             // A message to display when the user is created.
-  	        $_SESSION['msg'] = "You are now logged in";
+  	        $_SESSION['LoggedIn'] = "You are now logged in";
             // Redirect the user to the home page when done  
             header("location: home.php");
         }
@@ -123,12 +123,12 @@ if (isset($_POST['login'])) {
                 $_SESSION['admin'] = "admin";
                 $_SESSION['email'] = $email;
                 // Message to display after log in
-                $_SESSION['msg'] = "Admin succesfully logged in";
+                $_SESSION['AdmLoggedIn'] = "Admin successfully logged in";
                 
             } else {
                 $_SESSION['email'] = $email;
                 // Message to display after log in
-                $_SESSION['msg'] = "You are now logged in";
+                $_SESSION['LoggedIn'] = "You are now logged in";
             }
             header('location: home.php');
         }else {
@@ -194,7 +194,7 @@ if (isset($_POST['book'])) {
                 VALUES('$name', '$surname','$email','$number', '$chosenDate', '$time', '$reason', '$currentDate')";
         mysqli_query($db, $query);
         // Message to display if the booking was successfull
-        $_SESSION['msg'] = "Succesfully booked a meeting!";
+        $_SESSION['msg'] = "successfully booked a meeting!";
         header("Location: home.php");
     }
 }
@@ -230,9 +230,9 @@ if (isset($_POST['changePass'])) {
         // Update the users table with the new password for the users account
         $updPass = "UPDATE users SET password = '$newPass' WHERE email = '$email'";
         if (mysqli_query($db, $updPass)) {
-            $_SESSION['msg'] = "Passwords updated successfully.";
+            $_SESSION['passUpd'] = "Password updated successfully.";
         } else {
-            $_SESSION['msg'] = "Password was not updated.";
+            $_SESSION['passUpdFail'] = "Password was not updated.";
             echo $db->error;
         }
 
@@ -243,4 +243,59 @@ if (isset($_POST['changePass'])) {
     
 
     
+}
+
+
+if (isset($_POST['changeEmail'])) {
+
+    $email = $_SESSION['email'];
+
+    $password = mysqli_real_escape_string($db, $_POST["password"]);
+    $newEmail = mysqli_real_escape_string($db, $_POST["newEmail"]);
+    $cnfrmEmail = mysqli_real_escape_string($db, $_POST["cnfrmEmail"]);
+
+    $passQuery = "SELECT password FROM users WHERE email = '$email' LIMIT 1";
+    $result = mysqli_query($db, $passQuery);
+    $userPass = mysqli_fetch_assoc($result);
+
+    $password = md5($password);
+
+    if ($userPass['password'] != $password) {
+        $passwordsDifferent = "Sorry passord does not match";
+        array_push($errors, $passwordsDifferent);
+    }
+
+    if (!str_contains($newEmail, ".")) {
+        $email_error = "Email is not valid.";
+        array_push($errors, $email_error);
+    }
+
+    // Check if the email is taken.
+    $userCheck = "SELECT * FROM users WHERE email = '$newEmail' LIMIT 1";
+    $result = mysqli_query($db, $userCheck);
+    $user = mysqli_fetch_assoc($result);
+
+    if (isset($user) && $user["email"] == $newEmail) {
+        $email_taken_error = "Sorry, Email already taken.";
+        array_push($errors, $email_taken_error);
+    }
+
+
+    if (count($errors) == 0) {
+
+        // Update the users table with the new password for the users account
+        $updEmail = "UPDATE users SET email = '$newEmail' WHERE email = '$email'";
+
+        if (mysqli_query($db, $updEmail)) {
+            $_SESSION['email'] = $newEmail;
+            $_SESSION['emailUpdSucc'] = "Email updated successfully.";
+        } else {
+            $_SESSION['emailUpdFail'] = "Email was not updated.";
+            echo $db->error;
+        }
+
+        header("location: account-main.php");
+
+    }
+
 }

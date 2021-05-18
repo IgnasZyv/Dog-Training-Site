@@ -30,7 +30,7 @@ if (!isset($_SESSION['admin'])) {
 <body>
     <div class="navbar" id="home">
         <div class="container">
-            <a class="logo" href="../home.php">A Dog's <span>Life</span></a>
+            <a class="logo" href="../../home.php">A Dog's <span>Life</span></a>
             <img id="menu-cta" class="mobile-menu" src="../../resources/assets/Icon material-menu.svg" alt="menu button">
 
             <nav>

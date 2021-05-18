@@ -81,7 +81,7 @@ $bookingQuery = "SELECT * FROM booking WHERE email = '$email' ORDER BY bookedDat
                 <!-- Secondary navigation for the account -->
                 <ul>
                     <li><a href="account-main.php" id="first-li">Account Information</a></li>
-                    <li><strong><a href="fetchbooking.php">My Bookings</a></strong></li>
+                    <li><strong><a href="comBookings.php">My Bookings</a></strong></li>
                     <!-- If the user logged in is admin display this list item -->
                     <?php if(isset($_SESSION['admin'])) : ?>
                         <li><a href="admin/adminMain.php">Admin Panel</a></li>

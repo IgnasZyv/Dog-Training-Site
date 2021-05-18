@@ -173,6 +173,22 @@ section {
   color: black;
 }
 
+.account-sec .main-box .inputContainer {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.account-sec .main-box .inputContainer input {
+  width: 10em;
+  padding: .5em;
+  border-radius: 1em;
+  border: 1px solid gray;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-bottom: 1em;
+  margin-right: 25em;
+}
+
 .account-sec .main-box table {
   text-align: center;
   margin: auto;
@@ -222,28 +238,28 @@ section {
   font-weight: bold;
 }
 
-.changePass {
+.changeAcc {
   background-color: var(--secondary-color);
 }
 
-.changePass form {
+.changeAcc form {
   width: -webkit-min-content;
   width: -moz-min-content;
   width: min-content;
   margin: auto;
 }
 
-.changePass label {
+.changeAcc label {
   display: block;
   color: white;
   text-align: left;
 }
 
-.changePass label .confirm-password {
+.changeAcc label .confirm-password {
   width: 10em;
 }
 
-.changePass input {
+.changeAcc input {
   width: 20em;
   padding: .5em;
   border-radius: 1em;
@@ -253,7 +269,7 @@ section {
   margin-bottom: 1em;
 }
 
-.changePass .submit-cta {
+.changeAcc .submit-cta {
   border: 3px solid var(--primary-color);
   background: var(white);
   color: var(--primary-color);
@@ -268,23 +284,23 @@ section {
   line-height: .8em;
 }
 
-.changePass .login-a {
+.changeAcc .login-a {
   color: white;
 }
 
-.changePass .login-a a {
+.changeAcc .login-a a {
   color: var(--primary-color);
   font-weight: bold;
 }
 
-.changePass .form-error span {
+.changeAcc .form-error span {
   height: 35px;
   font-size: .9em;
   color: #D83D5A;
   text-align: left;
 }
 
-.changePass .form-error input {
+.changeAcc .form-error input {
   border: 2px solid #D83D5A;
 }
 

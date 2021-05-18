@@ -158,6 +158,21 @@ section {
   color: white;
 }
 
+.account-sec .main-box .inputContainer {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.account-sec .main-box .inputContainer input {
+  width: 10em;
+  padding: .5em;
+  border-radius: 1em;
+  border: 1px solid gray;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-bottom: 1em;
+}
+
 .account-sec .main-box .flex-container .bookings h2 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
