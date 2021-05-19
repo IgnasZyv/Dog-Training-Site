@@ -96,7 +96,6 @@ if (!isset($_SESSION['admin'])) {
                                 <th scope="col">Reason</th>
                                 <th scope="col">email</th>
                                 <th scope="col">Date Of Booking</th>
-                
                             </tr>
                             <div class="bookingRows">
                                 <?php foreach($comingBookings as $key=>$val){ ?>

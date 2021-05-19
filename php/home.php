@@ -91,7 +91,8 @@
         </div>
   	<?php endif ?>
         <!-- Main heading -->
-    <section class="main-body">
+    <section class="main-body shadow">
+
         <div class="container">
             <div class="main-container">
                 <div class="message">
@@ -105,7 +106,7 @@
                     <a href="../php/booking.php" class="primary-cta">First meeting is free</a>
                 </div>
 
-                <div class="image">
+                <div class="image" class="shadow">
                     <img class="main-img" src="../resources/assets/dog-4988985_1280.svg" alt="smiling dog image">
                 </div>
             </div>

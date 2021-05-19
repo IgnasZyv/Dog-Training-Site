@@ -1,10 +1,31 @@
 <?php
-require('adminBookingScript.php');
+require('adminScript.php');
 
 // If the user is not an admin they will be redirected to the home page
 if (!isset($_SESSION['admin'])) {
     $_SESSION['msg'] = "You are not allowed to see this page!";
     header('location: ../../home.php');
+}
+
+$bookingQuery = "SELECT * FROM booking ORDER BY bookedDate, time  ASC";
+
+$result = mysqli_query($db, $bookingQuery);
+
+$bookingRows = array();
+
+
+$comingBookings = array();
+
+
+if ($result->num_rows > 0) {
+// output data of each row
+    while($row = $result->fetch_assoc()) {
+
+        if (new dateTime($row['bookedDate']) >= new dateTime()) {
+            array_push($comingBookings, $row);
+
+        }
+    }
 }
 
 ?>
@@ -99,6 +120,7 @@ if (!isset($_SESSION['admin'])) {
             <div class="nav-right">
                 <ul>
                     <li><strong><a href="adminMain.php">View Bookings</a></strong></li>
+                    <li><a href="adminPrevBookings.php">Previous Bookings</a></li>
                     <li><a href="adminUsers.php">View Users</a></li>
                     <li><a href="addAdmin.php">Add Users</a></li>
                 </ul>
@@ -169,7 +191,7 @@ if (!isset($_SESSION['admin'])) {
             if (confirm('Are you sure you want to delete this entry?')) {
                 console.log('sending request');
                 // delete record only once user has confirmed
-                $.post('adminBookingScript.php', data, function (res) {
+                $.post('adminScript.php', data, function (res) {
                     console.log('received response', res);
                     // we want to delete the table row only if we received a response back saying that it worked
                     if (res == "success") {
@@ -196,6 +218,7 @@ if (!isset($_SESSION['admin'])) {
         });
 
     </script>
-
+    <script src="../../../js/nav.js"></script>
+    <script src="../../../js/scripts.js"></script>
 </body>
 </html>

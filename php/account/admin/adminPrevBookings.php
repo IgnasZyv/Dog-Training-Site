@@ -1,24 +1,31 @@
 <?php
-require_once("../../../db/db_connect.php");
-// If the user is not an admin redirects the user home and displays a message
+require('adminScript.php');
+
+// If the user is not an admin they will be redirected to the home page
 if (!isset($_SESSION['admin'])) {
     $_SESSION['msg'] = "You are not allowed to see this page!";
-    header('location: ../home.php');
+    header('location: ../../home.php');
 }
-// Take current users email
-$email = $_SESSION['email'];
 
-// Sorts all of the user entries by role so the admins will be displayed first
-$userQuery = "SELECT * FROM users ORDER BY role ASC";
+$bookingQuery = "SELECT * FROM booking ORDER BY bookedDate, time  ASC";
 
-$result = mysqli_query($db, $userQuery);
+$result = mysqli_query($db, $bookingQuery);
 
-$userRows = array();
+
+// $date = new dateTime("now");
+// $currentDate = $date->format('Y-m-d');
+
+$comingBookings = array();
+
 
 if ($result->num_rows > 0) {
 // output data of each row
     while($row = $result->fetch_assoc()) {
-        array_push($userRows, $row);
+
+        if (new dateTime($row['bookedDate']) < new dateTime()) {
+            array_push($comingBookings, $row);
+
+        }
     }
 }
 
@@ -36,7 +43,6 @@ if ($result->num_rows > 0) {
     <title>Admin Panel</title>
 </head>
 <body>
-<!-- Main navigation -->
     <div class="navbar" id="home">
         <div class="container">
             <a class="logo" href="../../home.php">A Dog's <span>Life</span></a>
@@ -52,7 +58,7 @@ if ($result->num_rows > 0) {
                 <ul class="secondary-nav">
                     <!-- If the user is logged in instead of Log in and Register they will be displayed their email -->
                   <?php if(isset($_SESSION['email'])) : ?>
-                      <li><strong><a href="account/account-main.php"><?php echo $_SESSION['email']; ?></a></strong></li>
+                      <li><strong><a href="account-main.php"><?php echo $_SESSION['email']; ?></a></strong></li>
                       <li><a href="../../home.php?logout='1'">logout</a></li>
                   <?php else : ?>
                       <li><a href="../../loginform.php">Log In</a></li>
@@ -73,11 +79,35 @@ if ($result->num_rows > 0) {
             </div>
         </div>
     </section>
+    <?php if (isset($_SESSION['msg'])) : ?>
+        <div id="overlay" onclick="overlayOff()" >
+            <div class="container">
+                <h3>
+                <?php 
+                    echo $_SESSION['msg']; 
+                    unset($_SESSION['msg']);
+                ?>
+                </h3>
+            </div>
+        </div>
+  	<?php endif ?>
+    <?php if (isset($_SESSION['admCreated'])) : ?>
+        <div id="overlay" onclick="overlayOff()" >
+            <div class="container">
+                <h3>
+                <?php 
+                    echo $_SESSION['admCreated']; 
+                    unset($_SESSION['admCreated']);
+                ?>
+                </h3>
+            </div>
+        </div>
+  	<?php endif ?>
 
-  <section class="account-sec">
+    <section class="account-sec">
         <div class="container">
+            <!-- Secondary navigation for the account -->
             <div class="nav">
-                <!-- Secondary navigation for the account -->
                 <ul>
                     <li><a href="../account-main.php" id="first-li">Account Information</a></li>
                     <li><a href="../comBookings.php">My Bookings</a></li>
@@ -91,66 +121,58 @@ if ($result->num_rows > 0) {
             <div class="nav-right">
                 <ul>
                     <li><a href="adminMain.php">View Bookings</a></li>
-                    <li><strong><a href="adminUsers.php">View Users</a></strong></li>
+                    <li><strong><a href="adminPrevBookings.php">Previous Bookings</a></strong></li>
+                    <li><a href="adminUsers.php">View Users</a></li>
                     <li><a href="addAdmin.php">Add Users</a></li>
                 </ul>
             </div>
             <div class="main-box">
                 <div class="flex-container">
-
-                    <div class="users">
-                        <h2>Users</h2>
+                    <div class="bookings">
+                        <h2>Previous Boookings</h2>
+                        <!-- Search box -->
                         <div class="inputContainer">
-                            <input type="text" id="searchInput" placeholder="Search.." style="margin-right: 35em;">
+                            <input type="text" id="searchInput" placeholder="Search.." style="margin-right: 43em;">
                         </div>
-                        <!-- Table for displaying users from the database -->
-                        <table id="users-info">
+                        <!-- Table for displaying all of the upcoming bookings from the database -->
+                        <table>
                             <thead>
                                 <tr>
-                                    <th scope="col"></th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Surname</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Phone Number</th>
-                                    <th scope="col">role</th>
-                                </tr>
+                                <th scope="col"></th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Booking Date</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Reason</th>
+                                <th scope="col">email</th>
+                                <th scope="col">Date Of Booking</th>
+                            </tr>
                             </thead>
                             <tbody id="fromDatabase">
-                                <!-- For every entry user in the database -->
-                                <?php foreach($userRows as $key=>$val){ ?>       
-                                    <!-- if the user from the database is an admin add the class to that row for styling -->
-                                    <?php if ($val['role'] == '0') : ?>
-                                        <tr class="rowAdmin">
-                                            <!-- A button for delete the row which is used by js -->
-                                            <td><input type="button" class="delete" value="Delete"></td>
-                                            <td><?php echo $val['name']; ?></td>
-                                            <td><?php echo $val['surname'];?></td>
-                                            <td><?php echo $val['email']; ?></td>
-                                            <td><?php echo $val['Pnumber']; ?></td>
-                                            <td>Admin</td>
-                                            <td class="id" style="display:none;"><?php echo $val['user_id']; ?></td>
-                                        </tr>
-                                    <!-- Otherwise don't add the class with no special styling -->
-                                    <?php else : ?>
+                                <div class="bookingRows">
+                                    <!-- For every upcoming booking creates a table row -->
+                                    <?php foreach($comingBookings as $key=>$val){ ?>
                                         <tr class="row">
                                             <!-- A button for delete the row which is used by js -->
-                                            <td><input type="button" class="delete" value="Delete"></td>
-                                            <td><?php echo $val['name']; ?></td>
-                                            <td><?php echo $val['surname'];?></td>
+                                            <td><input type="button" class="delete" value="Delete"></td>     
+                                            <!-- Takes the id of the booking which is used to delete the table row incase the delete button is clicked -->
+                                            <td class="bookingId"><?php echo $val['id']; ?></td>
+                                            <td><?php echo $val['bookedDate']; ?></td>
+                                            <!-- Convert the time recieved from database so I can format it to display the AM and PM -->
+                                            <td><?php echo date('H:i A', strtotime($val['time']));?></td>
+                                            <td><?php echo $val['reason']; ?></td>
                                             <td><?php echo $val['email']; ?></td>
-                                            <td><?php echo $val['Pnumber']; ?></td>
-                                            <td>User</td>
-                                            <td class="id" style="display:none;"><?php echo $val['user_id']; ?></td>
+                                            <td><?php echo $val['dateOfBooking']; ?></td>
                                         </tr>
-                                    <?php endif; ?>
-                                <?php } ?>
+                                    <?php } ?>
+                                </div>
                             </tbody>
-                            <tr>
                             
-                            </tr>
+                            
                         </table>
                     </div>
-                </div>                   
+
+                </div>
+
             </div>
         </div>
     </section>
@@ -160,11 +182,11 @@ if ($result->num_rows > 0) {
             var button = $(this), 
             tr = button.closest('tr');
             // find the ID stored in the .groupId cell
-            var id = tr.find('td.id').text();
+            var id = tr.find('td.bookingId').text();
             console.log('clicked button with id', id);
 
-            // PHP script will delete a row with the email provided
-            var data = { 'userId': id };
+            // your PHP script will delete a row from the id provided
+            var data = { 'bookingID': id };
 
             // ask confirmation
             if (confirm('Are you sure you want to delete this entry?')) {
@@ -197,5 +219,7 @@ if ($result->num_rows > 0) {
         });
 
     </script>
+    <script src="../../../js/nav.js"></script>
+    <script src="../../../js/scripts.js"></script>
 </body>
 </html>

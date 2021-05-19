@@ -108,12 +108,12 @@ if (!isset($_SESSION['email'])) {
                 <label for="date">Enter the date: </label>
                 <div class="date-time">
                     <!-- Displays the current date when the user first enters the page both inputs are not editable-->
-                    <input type="text" id="date" name="date" value="<?php echo $day;?>" readonly >
-                    <input type="text" id="time" name="time" placeholder="time" readonly><br>
+                    <input type="text" id="date" name="date" value="<?php echo $day;?>" readonly required>
+                    <input type="text" id="time" name="time" placeholder="time" readonly required><br>
                 </div>
                 <label for="message">What is the meeting for?</label>
                 <!-- Limits the length of the message to 50 chars-->
-                <textarea name="message" id="message" cols="30" maxlength="50"></textarea><br>
+                <textarea name="message" id="message" cols="30" maxlength="50" required></textarea><br>
                 <!-- Used by javascript to edit the number depending on the textarea input length -->
                 <small id="char-left">50 characters left</small> <br>
 

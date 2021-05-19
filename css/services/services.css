@@ -188,10 +188,21 @@ section {
   background: var(--secondary-color);
   padding-top: 3em;
   padding-bottom: 3em;
+  position: relative;
 }
 
 .grooming-sec img {
   display: none;
+}
+
+.grooming-sec a {
+  display: block;
+  margin-top: 1.2em;
+  color: white;
+  font-size: 1.2em;
+  font-style: italic;
+  text-decoration: underline;
+  width: 7em;
 }
 
 .grooming-sec h1 {
@@ -204,24 +215,50 @@ section {
   border: solid var(--primary-color);
   border-radius: 10em;
   font-size: 1.2em;
-  margin: auto;
   font-weight: bold;
+  margin: auto;
 }
 
 .grooming-sec p {
-  margin-left: 2em;
   color: white;
   font-size: .9em;
+}
+
+.grooming-sec h2 {
+  font-size: 1.2em;
+  color: white;
+  width: 25em;
+}
+
+.grooming-sec h3 {
+  font-weight: normal;
+  color: var(--primary-color);
+}
+
+.grooming-sec .header {
+  font-size: 1em;
+  width: 45em;
 }
 
 .daycare-sec {
   background: var(--primary-color);
   padding-top: 3em;
   padding-bottom: 3em;
+  position: relative;
 }
 
 .daycare-sec img {
   display: none;
+}
+
+.daycare-sec a {
+  display: block;
+  margin-top: 1.2em;
+  color: black;
+  font-size: 1.2em;
+  font-style: italic;
+  text-decoration: underline;
+  width: 7em;
 }
 
 .daycare-sec h1 {
@@ -234,23 +271,50 @@ section {
   border: solid var(--secondary-color);
   border-radius: 10em;
   font-size: 1.2em;
+  font-weight: bold;
   margin: auto;
 }
 
 .daycare-sec p {
-  margin-left: 2em;
-  color: var(--secondary-color);
+  color: black;
   font-size: .9em;
+}
+
+.daycare-sec h2 {
+  font-size: 1.2em;
+  color: black;
+  width: 25em;
+}
+
+.daycare-sec h3 {
+  font-weight: normal;
+  color: black;
+}
+
+.daycare-sec .header {
+  font-size: 1em;
+  width: 45em;
 }
 
 .boarding-sec {
   background: var(--secondary-color);
   padding-top: 3em;
   padding-bottom: 3em;
+  position: relative;
 }
 
 .boarding-sec img {
   display: none;
+}
+
+.boarding-sec a {
+  display: block;
+  margin-top: 1.2em;
+  color: white;
+  font-size: 1.2em;
+  font-style: italic;
+  text-decoration: underline;
+  width: 7em;
 }
 
 .boarding-sec h1 {
@@ -263,14 +327,29 @@ section {
   border: solid var(--primary-color);
   border-radius: 10em;
   font-size: 1.2em;
+  font-weight: bold;
   margin: auto;
-  margin-bottom: 3em;
 }
 
 .boarding-sec p {
-  margin-left: 2em;
   color: white;
   font-size: .9em;
+}
+
+.boarding-sec h2 {
+  font-size: 1.2em;
+  color: white;
+  width: 25em;
+}
+
+.boarding-sec h3 {
+  font-weight: normal;
+  color: var(--primary-color);
+}
+
+.boarding-sec .header {
+  font-size: 1em;
+  width: 45em;
 }
 
 nav.menu-btn {
@@ -439,6 +518,15 @@ input, textarea {
   .walking-sec .text-container p {
     width: 35em;
   }
+  .grooming-sec .text-container p {
+    width: 35em;
+  }
+  .daycare-sec .text-container p {
+    width: 35em;
+  }
+  .boarding-sec .text-container p {
+    width: 35em;
+  }
 }
 
 @media only screen and (min-width: 1080px) {
@@ -496,6 +584,45 @@ input, textarea {
   }
   .walking-sec p {
     margin: 0 auto;
+  }
+  .grooming-sec {
+    display: block;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+  }
+  .grooming-sec p {
+    margin: auto;
+  }
+  .grooming-sec h2 {
+    margin: 1em auto 1em auto;
+  }
+  .daycare-sec {
+    display: block;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+  }
+  .daycare-sec p {
+    margin: auto;
+  }
+  .daycare-sec h2 {
+    margin: 1em auto 1em auto;
+  }
+  .boarding-sec {
+    display: block;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+  }
+  .boarding-sec p {
+    margin: auto;
+  }
+  .boarding-sec h2 {
+    margin: 1em auto 1em auto;
   }
   .contact-section {
     padding-top: 5em;
@@ -599,6 +726,7 @@ input, textarea {
     font-weight: bold;
   }
   .training-sec .text-container .text-left p, .training-sec .text-container .text-center p, .training-sec .text-container .text-right p {
+    width: 30em;
     text-align: center;
   }
   .training-sec .training-pic {
@@ -644,12 +772,150 @@ input, textarea {
     font-weight: bold;
   }
   .walking-sec .text-container .text-left p, .walking-sec .text-container .text-right p {
+    width: 30em;
     text-align: center;
   }
   .walking-sec .walking-pic {
     position: relative;
   }
   .walking-sec .walking-pic img {
+    display: block;
+    position: absolute;
+    right: -5em;
+    width: 15em;
+    border-radius: 2em;
+  }
+  .grooming-sec {
+    display: -ms-grid;
+    display: grid;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+  }
+  .grooming-sec a {
+    margin: auto;
+    width: 7em;
+  }
+  .grooming-sec h1 {
+    font-size: 1.8em;
+  }
+  .grooming-sec .text-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .grooming-sec .text-container p {
+    margin-left: 0;
+  }
+  .grooming-sec .text-container .text-left, .grooming-sec .text-container .text-center, .grooming-sec .text-container .text-right {
+    width: 30em;
+  }
+  .grooming-sec .text-container .text-left h3, .grooming-sec .text-container .text-center h3, .grooming-sec .text-container .text-right h3 {
+    font-weight: bold;
+  }
+  .grooming-sec .text-container .text-left p, .grooming-sec .text-container .text-center p, .grooming-sec .text-container .text-right p {
+    width: 30em;
+    text-align: center;
+  }
+  .grooming-sec .gooming-pic {
+    position: relative;
+  }
+  .grooming-sec .gooming-pic img {
+    display: block;
+    position: absolute;
+    right: -5em;
+    width: 15em;
+    border-radius: 2em;
+  }
+  .daycare-sec {
+    display: -ms-grid;
+    display: grid;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+  }
+  .daycare-sec a {
+    margin: auto;
+    width: 7em;
+  }
+  .daycare-sec h1 {
+    font-size: 1.8em;
+  }
+  .daycare-sec .text-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .daycare-sec .text-container p {
+    margin-left: 0;
+  }
+  .daycare-sec .text-container .text-left, .daycare-sec .text-container .text-center, .daycare-sec .text-container .text-right {
+    width: 30em;
+  }
+  .daycare-sec .text-container .text-left h3, .daycare-sec .text-container .text-center h3, .daycare-sec .text-container .text-right h3 {
+    font-weight: bold;
+  }
+  .daycare-sec .text-container .text-left p, .daycare-sec .text-container .text-center p, .daycare-sec .text-container .text-right p {
+    width: 30em;
+    text-align: center;
+  }
+  .daycare-sec .daycare-pic {
+    position: relative;
+  }
+  .daycare-sec .daycare-pic img {
+    display: block;
+    position: absolute;
+    right: -5em;
+    width: 15em;
+    border-radius: 2em;
+  }
+  .boarding-sec {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+  }
+  .boarding-sec a {
+    margin: auto;
+    width: 7em;
+  }
+  .boarding-sec h1 {
+    font-size: 1.8em;
+  }
+  .boarding-sec .text-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 2em;
+  }
+  .boarding-sec .text-container p {
+    margin-left: 0;
+  }
+  .boarding-sec .text-container .text-left, .boarding-sec .text-container .text-center, .boarding-sec .text-container .text-right {
+    width: 30em;
+  }
+  .boarding-sec .text-container .text-left h3, .boarding-sec .text-container .text-center h3, .boarding-sec .text-container .text-right h3 {
+    font-weight: bold;
+  }
+  .boarding-sec .text-container .text-left p, .boarding-sec .text-container .text-center p, .boarding-sec .text-container .text-right p {
+    width: 30em;
+    text-align: center;
+  }
+  .boarding-sec .boarding-pic {
+    position: relative;
+  }
+  .boarding-sec .boarding-pic img {
     display: block;
     position: absolute;
     right: -5em;

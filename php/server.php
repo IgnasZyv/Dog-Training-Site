@@ -144,7 +144,8 @@ if (isset($_POST['book'])) {
     // Store users email as the sess_Email variable
     $sess_Email = $_SESSION['email'];
     // Date passed along with the form
-    $sessCustomDate = $_SESSION['sessCustomDate'];
+    $CustomDate = mysqli_real_escape_string($db, $_POST['date']);
+    //$sessCustomDate = $_SESSION['sessCustomDate'];
     // Take the details of the user who is trying to make a booking
     $query_email = "SELECT name, surname, email, Pnumber FROM users WHERE email='$sess_Email'";
     $email_result = mysqli_query($db, $query_email);
@@ -174,7 +175,7 @@ if (isset($_POST['book'])) {
     // Take the current date and time
     $currentTime = new DateTime("now");
     // Convert the date given into DateTime object
-    $chosenDate = new DateTime("$sessCustomDate");
+    $chosenDate = new DateTime("$CustomDate");
     // convert the date given by the user into the y-m-d format
     $chosenDate = $chosenDate->format("Y-m-d");
     // Do the same with the current date
@@ -291,6 +292,47 @@ if (isset($_POST['changeEmail'])) {
             $_SESSION['emailUpdSucc'] = "Email updated successfully.";
         } else {
             $_SESSION['emailUpdFail'] = "Email was not updated.";
+            echo $db->error;
+        }
+
+        header("location: account-main.php");
+
+    }
+
+}
+
+if (isset($_POST['changePhone'])) {
+    $email = $_SESSION['email'];
+
+    $password = mysqli_real_escape_string($db, $_POST["password"]);
+    $newNum = mysqli_real_escape_string($db, $_POST["newNum"]);
+    $cnfrmNum = mysqli_real_escape_string($db, $_POST["cnfrmNum"]);
+
+    $password = md5($password);
+
+    $passQuery = "SELECT password FROM users WHERE email = '$email' LIMIT 1";
+    $result = mysqli_query($db, $passQuery);
+    $userPass = mysqli_fetch_assoc($result);
+
+    if ($userPass['password'] != $password) {
+        $passwordsDifferent = "Sorry passord does not match";
+        array_push($errors, $passwordsDifferent);
+    }
+
+    if (preg_match("/[a-z,A-Z]/", $newNum)) {
+        $number_error = "Number field cannot have letters.";
+        array_push($errors, $number_error);
+    }
+
+    if (count($errors) == 0) {
+
+        // Update the users table with the new password for the users account
+        $updNum = "UPDATE users SET Pnumber = '$newNum' WHERE email = '$email'";
+
+        if (mysqli_query($db, $updNum)) {
+            $_SESSION['msg'] = "Phone number updated successfully.";
+        } else {
+            $_SESSION['msg'] = "Phone number was not updated.";
             echo $db->error;
         }
 

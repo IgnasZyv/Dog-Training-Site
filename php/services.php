@@ -107,46 +107,100 @@
                         </p>
                     </div>
                 </div>
-                <a href="../html/Pricing/pricing.html">Go to pricing</a>
+                <a href="pricing.php">Go to pricing</a>
             </div>
         </div>
     </section>
     
     <section class="grooming-sec">
         <div class="container">
+            <div class="gooming-pic">
+                <img src="../resources/assets/grooming.svg" alt="Dog Grooming Picture">
+            </div>
             <div>
                 <h1>Grooming</h1>
-                <p>
-                    We provide a full grooming service to keep you and your <br> 
-                    companion happy!
-                </p>
-                <img src="../resources/assets/grooming.svg" alt="Dog Grooming Picture">
+                <h2>Looking for the best grooming for your loved one?</h2>
+                <p class="header">Well, look no further.<br> <br> We provide the least intrusive and supportive approach to  
+                    grooming your loves ones!</p>
+
+                <div class="text-container">
+                    <div class="text-left">
+                        <h3>Best Grooming</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac tempus leo. Nulla gravida commodo. </p>
+                    </div>
+                    <div class="text-center">
+                        <h3>No Stress</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac tempus leo. Nulla gravida commodo. </p>
+                    </div>
+                    <div class="text-right">
+                        <h3>Relax</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac tempus leo. Nulla gravida commodo. .</p>
+                    </div>
+                </div>
+                <a href="pricing.php">Go to pricing</a>
+                
             </div>
         </div>
     </section>
     <section class="daycare-sec">
         <div class="container">
+            <div class="daycare-pic">
+                <img src="../resources/assets/sleeping.svg" alt="Dog Sleeping Picture">
+            </div>
             <div>
                 <h1>Daycare</h1>
-                <p>
-                    If you feel like your dog needs company while you're out <br>
-                    and about feel free to bring him to our daycare, we have <br>
-                    best facilities in town to keep your loved one happy!
-                </p>
-                <img src="../resources/assets/sleeping.svg" alt="Dog Sleeping Picture">
+
+                <h2>Looking for most relaxing and exciting daycare for your loved one?</h2>
+                <p class="header">Well, look no further.<br> <br> We provide the least intrusive and supportive approach to  
+                    taking care of your loves ones!</p>
+
+                <div class="text-container">
+                    <div class="text-left">
+                        <h3>Best Facilities</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac tempus leo. Nulla gravida commodo. </p>
+                    </div>
+                    <div class="text-center">
+                        <h3>No Stress</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac tempus leo. Nulla gravida commodo. </p>
+                    </div>
+                    <div class="text-right">
+                        <h3>Relax and enjoy</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac tempus leo. Nulla gravida commodo. .</p>
+                    </div>
+                </div>
+                <a href="pricing.php">Go to pricing</a>
+                
             </div>
         </div>
     </section>
     <section class="boarding-sec">
         <div class="container">
+            <div class="boarding-pic">
+                <img src="../resources/assets/boarding-dog.svg" alt="Dog on holiday Picture">
+            </div>
             <div>
                 <h1>Boarding</h1>
-                <p>
-                    We have many sitters that love dogs and are trusted with <br>
-                    good feedback for your loved one to enjoy a happy stay <br>
-                    while you can enjoy your holiday without a worry!
-                </p>
-                <img src="../resources/assets/boarding-dog.svg" alt="Dog on holiday Picture">
+                <h2>Looking for most relaxing and exciting holidays for you and for your loved one?</h2>
+                <p class="header">Well, look no further.<br> <br> We provide the least intrusive and supportive approach to  
+                    taking care of your loves ones!</p>
+
+                <div class="text-container">
+                    <div class="text-left">
+                        <h3>Best Facilities</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac tempus leo. Nulla gravida commodo. </p>
+                    </div>
+                    <div class="text-center">
+                        <h3>No Stress</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac tempus leo. Nulla gravida commodo. </p>
+                    </div>
+                    <div class="text-right">
+                        <h3>Relax and enjoy</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac tempus leo. Nulla gravida commodo. .</p>
+                    </div>
+                </div>
+                
+                <a href="pricing.php">Go to pricing</a>
+                
             </div>
         </div>
     </section>

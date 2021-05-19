@@ -66,6 +66,18 @@
         </div>
     </section>
     <!-- Different messages to display to let the user know why they ended up here -->
+    <?php if (isset($_SESSION['msg'])) : ?>
+        <div id="overlay" onclick="overlayOff()" >
+            <div class="container">
+                <h3>
+                <?php 
+                    echo $_SESSION['msg']; 
+                    unset($_SESSION['msg']);
+                ?>
+                </h3>
+            </div>
+        </div>
+    <?php endif ?>
     <?php if (isset($_SESSION['emailUpdSucc'])) : ?>
         <div id="overlay" onclick="overlayOff()" >
             <div class="container">
@@ -134,20 +146,19 @@
                         </tr>
                     </table>
                 </div>
-                
-
+            
                 <div class="change-info">
                     <ul>
                         <!-- Buttons for changing information -->
                         <li><a href="changePass.php">Change Password</a></li>
                         <li><a href="changeEmail.php">Change Email</a></li>
-                        <li>Change Phone Number</li>
+                        <li><a href="changeNum.php">Change Phone Number</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
-    <script src="../js/nav.js"></script>
-    <script src="../js/scripts.js"></script>
+    <script src="../../js/nav.js"></script>
+    <script src="../../js/scripts.js"></script>
 </body>
 </html>

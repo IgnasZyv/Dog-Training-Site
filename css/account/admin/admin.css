@@ -139,14 +139,14 @@ section {
 .account-sec .nav-right ul {
   position: absolute;
   display: block;
-  right: 2em;
+  right: -1em;
   top: 1em;
 }
 
 .account-sec .nav-right ul li {
   margin-bottom: 2em;
   text-align: center;
-  width: 10em;
+  width: 15em;
 }
 
 .account-sec .nav-right ul a {
