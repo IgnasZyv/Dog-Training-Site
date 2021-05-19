@@ -1,12 +1,11 @@
 <?php
 $_SESSION['fromAdmin'] = true;
-require('../../server.php');
+require('../../includes/server.inc.php');
 
 if (!isset($_SESSION['admin'])) {
     $_SESSION['msg'] = "You are not allowed to see this page!";
     header('location: ../../home.php');
 }
-
 
 ?>
 
@@ -71,7 +70,8 @@ if (!isset($_SESSION['admin'])) {
             </div>
             <div class="nav-right">
                 <ul>
-                    <li><a href="admin.php">View Bookings</a></li>
+                    <li><a href="adminMain.php">View Bookings</a></li>
+                    <li><a href="adminPrevBookings.php">Previous Bookings</a></li>
                     <li><a href="adminUsers.php">View Users</a></li>
                     <li><strong><a href="addAdmin.php">Add Users</a></strong></li>
                 </ul>

@@ -91,6 +91,7 @@ if ($result->num_rows > 0) {
             <div class="nav-right">
                 <ul>
                     <li><a href="adminMain.php">View Bookings</a></li>
+                    <li><a href="adminPrevBookings.php">Previous Bookings</a></li>
                     <li><strong><a href="adminUsers.php">View Users</a></strong></li>
                     <li><a href="addAdmin.php">Add Users</a></li>
                 </ul>
@@ -170,7 +171,7 @@ if ($result->num_rows > 0) {
             if (confirm('Are you sure you want to delete this entry?')) {
                 console.log('sending request');
                 // delete record only once user has confirmed
-                $.post('adminScript.php', data, function (res) {
+                $.post('adminScript.inc.php', data, function (res) {
                     console.log('received response', res);
                     // we want to delete the table row only if we received a response back saying that it worked
                     if (res == "success") {

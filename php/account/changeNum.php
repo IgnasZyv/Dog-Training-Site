@@ -2,7 +2,7 @@
 <?php
 // Set session variable for the server to find the appropriate location.
 $_SESSION['fromAccount'] = true;
-require('../server.php');
+require('../includes/server.inc.php');
 
 // if the user is not logged in they will be redirected to the main page and displayed the message.
 if (!isset($_SESSION['email'])) {

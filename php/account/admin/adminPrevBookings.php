@@ -1,5 +1,5 @@
 <?php
-require('adminScript.php');
+require('adminScript.inc.php');
 
 // If the user is not an admin they will be redirected to the home page
 if (!isset($_SESSION['admin'])) {
@@ -17,12 +17,16 @@ $result = mysqli_query($db, $bookingQuery);
 
 $comingBookings = array();
 
+$today = strtotime("today");
 
 if ($result->num_rows > 0) {
 // output data of each row
     while($row = $result->fetch_assoc()) {
 
-        if (new dateTime($row['bookedDate']) < new dateTime()) {
+        $date = $row['bookedDate'];
+        $bookedDate = strtotime($date);
+
+        if ($bookedDate < $today) {
             array_push($comingBookings, $row);
 
         }
@@ -192,7 +196,7 @@ if ($result->num_rows > 0) {
             if (confirm('Are you sure you want to delete this entry?')) {
                 console.log('sending request');
                 // delete record only once user has confirmed
-                $.post('adminScript.php', data, function (res) {
+                $.post('adminScript.inc.php', data, function (res) {
                     console.log('received response', res);
                     // we want to delete the table row only if we received a response back saying that it worked
                     if (res == "success") {

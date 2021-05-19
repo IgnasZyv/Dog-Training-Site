@@ -53,7 +53,7 @@ $(document).on("click",ul, function(e){
   });
 
 
-// Date picker in the registration form.
+// Date picker in the booking form.
 var dateToday = new Date(); 
 $(function() {
     $("#date").datepicker({
@@ -67,7 +67,7 @@ $(function() {
         var selected = $(this).val();
         document.getElementById('time').value = '';
         // send ajax request into booking script with the date selected
-        $.post('bookingscript.php', {'date':selected}, function(res){
+        $.post('booking.inc.php', {'date':selected}, function(res){
             // logs the vaue sent
             console.log(res);
             // deletes the contents of the time-right div and places "data" recieved inside it.

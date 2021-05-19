@@ -1,6 +1,6 @@
 <?php 
 // Require server.php where the login form will be evaluated.
-require('server.php'); 
+require('includes/server.inc.php'); 
 
 ?>
 

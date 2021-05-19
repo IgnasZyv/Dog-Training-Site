@@ -141,6 +141,7 @@ if (isset($_POST['login'])) {
 
 // If the method used to get here was post and variable book is set.
 if (isset($_POST['book'])) {
+    date_default_timezone_get();
     // Store users email as the sess_Email variable
     $sess_Email = $_SESSION['email'];
     // Date passed along with the form
@@ -183,8 +184,16 @@ if (isset($_POST['book'])) {
     // Take the hour of the current time
     $hour = $currentTime->format("H");
 
+
+
+    $chosenTime = new DateTime(strtotime($time));
+    $chosenHour = $chosenTime->format("H");
+
+
+
+
     // If the current hour is 17 or greater and the current date is the same or older than now throw an error in the form
-    if ($hour >= 17 && $chosenDate <= $currentDate) {
+    if ($chosenHour <= $hour && $chosenDate <= $currentDate) {
         $dateError = "Invalid date chosen (Can't go back in time).";
         array_push($errors, $dateError);
     }

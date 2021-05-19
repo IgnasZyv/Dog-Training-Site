@@ -1,9 +1,9 @@
 <?php
-require('bookingscript.php');
+require('booking.inc.php');
 
 // If book is set in the post then require server.
 if (isset($_POST['book'])) {
-    require('server.php');
+    require('includes/server.inc.php');
 }
 // If the user is not logged in redirect them to login form and display the error message
 if (!isset($_SESSION['email'])) {

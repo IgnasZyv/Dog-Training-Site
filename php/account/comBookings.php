@@ -10,11 +10,15 @@ $result = mysqli_query($db, $bookingQuery);
 
 $comingBookings = array();
 
+$today = strtotime("today");
+
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
         // Check if the booking is upcoming and not passed
-        if (new dateTime($row['bookedDate']) >= new dateTime()) {
+        $date = $row['bookedDate'];
+        $bookedDate = strtotime($date);
+        if ($bookedDate >= $today) {
             // Push that booking into the coming bookings array
             array_push($comingBookings, $row);
 

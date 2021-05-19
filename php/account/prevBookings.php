@@ -10,13 +10,19 @@ $bookingQuery = "SELECT * FROM booking WHERE email = '$email' ORDER BY bookedDat
     $result = mysqli_query($db, $bookingQuery);
 
     $passedBookings = array();
+
+    $today = strtotime("today");
+    
     // If there was an entry
     if ($result->num_rows > 0) {
     // output data of each row
         while($row = $result->fetch_assoc()) {
             // Create dateTime object with the time taken so I can compare it with the current date.
             // If the booked date is passed push it into the passed Bookings array
-            if (new dateTime($row['bookedDate']) < new dateTime()) {
+            $date = $row['bookedDate'];
+            $bookedDate = strtotime($date);
+            
+            if ($bookedDate < $today) {
                 array_push($passedBookings, $row);
 
             }
