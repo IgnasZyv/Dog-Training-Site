@@ -35,7 +35,7 @@ if (!isset($_SESSION['admin'])) {
                 <ul class="secondary-nav">
 
                   <?php if(isset($_SESSION['email'])) : ?>
-                      <li><strong><a href="account-main.php"><?php echo $_SESSION['email']; ?></a></strong></li>
+                      <li><strong><a href="../account-main.php"><?php echo $_SESSION['email']; ?></a></strong></li>
                       <li><a href="../../home.php?logout='1'">logout</a></li>
                   <?php else : ?>
                       <li><a href="../../loginform.php">Log In</a></li>

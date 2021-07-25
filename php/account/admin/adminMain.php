@@ -3,7 +3,7 @@ require('adminScript.inc.php');
 
 // If the user is not an admin they will be redirected to the home page
 if (!isset($_SESSION['admin'])) {
-    $_SESSION['msg'] = "You are not allowed to see this page!";
+    $_SESSION['noPermission'] = "You are not allowed to see this page!";
     header('location: ../../home.php');
 }
 
@@ -61,7 +61,7 @@ if ($result->num_rows > 0) {
                 <ul class="secondary-nav">
                     <!-- If the user is logged in instead of Log in and Register they will be displayed their email -->
                   <?php if(isset($_SESSION['email'])) : ?>
-                      <li><strong><a href="account-main.php"><?php echo $_SESSION['email']; ?></a></strong></li>
+                      <li><strong><a href="../account-main.php"><?php echo $_SESSION['email']; ?></a></strong></li>
                       <li><a href="../../home.php?logout='1'">logout</a></li>
                   <?php else : ?>
                       <li><a href="../../loginform.php">Log In</a></li>

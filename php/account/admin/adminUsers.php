@@ -52,7 +52,7 @@ if ($result->num_rows > 0) {
                 <ul class="secondary-nav">
                     <!-- If the user is logged in instead of Log in and Register they will be displayed their email -->
                   <?php if(isset($_SESSION['email'])) : ?>
-                      <li><strong><a href="account/account-main.php"><?php echo $_SESSION['email']; ?></a></strong></li>
+                      <li><strong><a href="../account-main.php"><?php echo $_SESSION['email']; ?></a></strong></li>
                       <li><a href="../../home.php?logout='1'">logout</a></li>
                   <?php else : ?>
                       <li><a href="../../loginform.php">Log In</a></li>

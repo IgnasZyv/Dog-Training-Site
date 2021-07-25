@@ -55,12 +55,11 @@ if (!isset($_SESSION['email'])) {
   </div>
   <section class="main-banner">
     <div class="container">
-        <div class="center">
-            <h1>Booking</h1>
-        </div>
+        <h1>Booking</h1>
     </div>
-</section>
-<section class="booking-sec">
+    </section>
+
+    <section class="booking-sec">
 
 
     <div class="container">

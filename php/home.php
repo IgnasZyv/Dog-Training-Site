@@ -66,6 +66,18 @@
             </div>
         </div>
   	<?php endif ?>
+    <?php if (isset($_SESSION['noPermission'])) : ?>
+        <div id="overlay" onclick="overlayOff()" >
+            <div class="container">
+                <h3>
+                <?php 
+                    echo $_SESSION['noPermission']; 
+                    unset($_SESSION['noPermission']);
+                ?>
+                </h3>
+            </div>
+        </div>
+  	<?php endif ?>
     <?php if (isset($_SESSION['LoggedIn'])) : ?>
         <div id="overlay" onclick="overlayOff()" >
             <div class="container">

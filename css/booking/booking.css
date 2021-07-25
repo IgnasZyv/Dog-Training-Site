@@ -10,6 +10,11 @@ body {
   margin: 0;
 }
 
+body, html {
+  height: 100%;
+  width: 100%;
+}
+
 .navbar {
   background-color: white;
   padding: 1em;
@@ -65,9 +70,14 @@ section {
   background-size: cover;
   background-position: center;
   text-align: center;
+  height: 15%;
 }
 
-.main-banner h1 {
+.main-banner .container {
+  margin: auto;
+}
+
+.main-banner .container h1 {
   text-align: center;
   margin: auto;
   background: white;
@@ -81,8 +91,8 @@ section {
 .booking-sec {
   position: relative;
   background: var(--secondary-color);
+  height: 19%;
   color: white;
-  padding-top: 5em;
 }
 
 .booking-sec .left-container {

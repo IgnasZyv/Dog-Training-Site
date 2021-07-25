@@ -9,6 +9,12 @@ body {
     font-family: "Poppins";
     background: #E2E2E2;
     margin: 0;
+
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
 }
 
 
@@ -66,29 +72,35 @@ section {
     background-size: cover;
     background-position: center;
     text-align: center;
+    height: 15%;
 
-    h1 {
-        text-align: center;
+    .container {
         margin: auto;
-        background: white;
-        width: 8em;
-        line-height: 2em;
-        border: solid var(--primary-color);
-        border-radius: 15px;
-        color: var(--primary-color);
-    }
-}
 
-         
+        h1 {
+            text-align: center;
+            margin: auto;
+            background: white;
+            width: 8em;
+            line-height: 2em;
+            border: solid var(--primary-color);
+            border-radius: 15px;
+            color: var(--primary-color);
+        }
+    }
+
+    
+}
 
 
 .booking-sec {
     position: relative;
     background: var(--secondary-color);
+    height: 19%;
     color: white;
-    padding-top: 5em;
+
     .left-container {
-        float: left ;
+        float: left;
 
         h2 {
             color: var(--primary-color);

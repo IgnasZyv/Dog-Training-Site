@@ -185,8 +185,9 @@ if (isset($_POST['book'])) {
     $hour = $currentTime->format("H");
 
 
-
+    print(strtotime($time));
     $chosenTime = new DateTime(strtotime($time));
+    
     $chosenHour = $chosenTime->format("H");
 
 
